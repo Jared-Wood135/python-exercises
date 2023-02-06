@@ -12,6 +12,7 @@ greeting = 'Hello, World!'
 # INPUT IN CLI: python -i python_introduction_exercises.py
 
 # 9. View the contents of the greeting variable.
+print(greeting)
 
 # 10. Create a Jupyter notebook named my_first_notebook.
 
