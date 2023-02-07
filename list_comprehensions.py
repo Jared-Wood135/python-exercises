@@ -94,3 +94,7 @@ for fruit in fruits:
 
 # Make a variable named "primes" that is a list containing the prime numbers in the numbers list. 
 # *Hint* you may want to make or find a helper function that determines if a given number is prime or not.
+
+# =======================================================================================================
+# BONUS Exercise END
+# =======================================================================================================
