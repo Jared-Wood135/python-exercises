@@ -135,10 +135,10 @@ True or "42"
 # -- Bonus Neither the username or password can start or end with whitespace
 username = 'codeup'
 password = 'notastrongpassword'
-def userpass():
-    IF password >= 5
-    
-bool(password >= 5, password <= 20 AND username != password)
+len(password)
+len(password) >= 5 and len(password) <= 20 and username != password
+# BONUS
+(len(password) >= 5 and len(password) <= 20 and username != password) and not (password.startswith(' ') and password.endswith(' ') and username.startswith(' ') and username.endswith(' '))
 
 # =======================================================================================================
 # Questions 5-9 END
