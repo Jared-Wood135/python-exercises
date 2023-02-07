@@ -117,6 +117,10 @@ numbers_plus_5
 
 # Make a variable named "primes" that is a list containing the prime numbers in the numbers list. 
 # *Hint* you may want to make or find a helper function that determines if a given number is prime or not.
+import sympy
+print(sympy.isprime(3))
+10**0.5
+
 
 # =======================================================================================================
 # BONUS Exercise END
