@@ -118,11 +118,17 @@ True or "42"
 
 # 7. A student can be enrolled to a class only if the class is not full and the class schedule does 
 #    not conflict with her current schedule.
-???
+class_not_full = True
+no_schedule_conflict = True
+can_enroll = class_not_full + no_schedule_conflict
+bool(can_enroll)
 
 # 8. A product offer can be applied only if people buys more than 2 items, and the offer has not 
 #    expired. Premium members do not need to buy a specific amount of products.
-???
+more_than_2 = True
+offer_not_expired = True
+applied = more_than_2 + offer_not_expired
+bool(applied)
 
 # 9. Continue working in the data_types_and_variables.py file. Use the following code to follow the 
 #    instructions below:
@@ -136,9 +142,9 @@ True or "42"
 username = 'codeup'
 password = 'notastrongpassword'
 len(password)
-len(password) >= 5 and len(password) <= 20 and username != password
+len(password) >= 5 and len(username) <= 20 and username != password
 # BONUS
-(len(password) >= 5 and len(password) <= 20 and username != password) and not (password.startswith(' ') and password.endswith(' ') and username.startswith(' ') and username.endswith(' '))
+(len(password) >= 5 and len(username) <= 20 and username != password) and not (password.startswith(' ') and password.endswith(' ') and username.startswith(' ') and username.endswith(' '))
 
 # =======================================================================================================
 # Questions 5-9 END
