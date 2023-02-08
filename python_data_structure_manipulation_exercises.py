@@ -131,15 +131,51 @@ students = [
 # the following questions:
 
 # 1. How many students are there?
+# 14
+len(students)
 
-
-# 2. How many students prefer light coffee? For each type of coffee roast?
-
+# 2. How many students prefer light coffee? For each type of coffee roast
+# light = 3 // medium = 5 // dark = 5
+light_pref = sum([1 for dict in students if "light" in dict["coffee_preference"]])
+medium_pref = sum([1 for dict in students if "medium" in dict["coffee_preference"]])
+dark_pref = sum([1 for dict in students if "dark" in dict["coffee_preference"]])
+f"{light_pref : <10}{medium_pref : ^10}{dark_pref : >10}"
 
 # 3. How many types of each pet are there?
 
 
+
 # 4. How many grades does each student have? Do they all have the same number of grades?
+test = [50, 60, 70, 80]
+for i in test:
+    i.
+def letter_grade():
+    for dict in students:
+        for i in dict['grades']:
+            if i >= 90:
+                i = 'A'
+            elif 89 >= i >= 80:
+                i = 'B'
+            elif 79 >= i >= 70:
+                i = 'C'
+            elif 69 >= i >= 60:
+                i = 'D'
+            elif 59 >= i:
+                i = 'F'
+
+for dict in students:
+        for i in dict['grades']:
+            if i >= 90:
+                dict[i] == 'A'
+            elif 89 >= i >= 80:
+                dict[i] == 'B'
+            elif 79 >= i >= 70:
+                dict[i] == 'C'
+            elif 69 >= i >= 60:
+                dict[i] == 'D'
+            elif 59 >= i:
+                [i] == 'F'
+        dict['grades']
 
 
 # 5. What is each student's grade average?
