@@ -189,7 +189,7 @@ else:
         if digit % 2 == 0:
             pass
         elif digit == 27:
-            pass
+            print("Yikes! Skipping number: 27")
         else:
             print("Here is an odd number:", digit)
 
@@ -224,7 +224,6 @@ for i in list(range(1, 101)):
     else:
         i
 
-
 # 4. DISPLAY A TABLE OF POWERS
 #       - Prompt the user to enter an integer.
 #       - Display a table of squares and cubes from 1 to the value entered.
@@ -243,10 +242,24 @@ for i in list(range(1, 101)):
 #         3      | 9       | 27
 #         4      | 16      | 64
 #         5      | 25      | 125
+POWER = int(input("IT'S ABOUT POWER...  Squared and cubed power that is! "))
+
+while type(POWER) != int:
+    POWER = int(input("IT'S ABOUT POWER...  Squared and cubed power that is! "))
+else:
+    for i in list(range(1, POWER + 1)):
+        i ** 2, i ** 3
+        
 
 
 # 4-BONUS: Research python's format string specifiers to align the table
-
+while type(POWER) != int:
+    POWER = int(input("IT'S ABOUT POWER...  Squared and cubed power that is! "))
+else:
+    for i in list(range(1, POWER + 1)):
+        squared = i ** 2
+        cubed = i ** 3
+        print(f"{i : <10}{squared : ^10}{cubed : >10}")
 
 # 5. CONVERT GIVEN NUMBER GRADES INTO LETTER GRADES
 #       - Prompt the user for a numerical grade from 0 to 100.
