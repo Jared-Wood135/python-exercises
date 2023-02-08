@@ -273,10 +273,56 @@ else:
 #         C : 79 - 67
 #         D : 66 - 60
 #         F : 59 - 0
+grade = int(input("Enter your numerical score: "))
 
+while type(grade) != int:
+    grade = int(input("Enter your numerical score: "))
+else:
+    if grade >= 88:
+        print("A")
+    elif grade <= 87 and grade >= 80:
+        print("B")
+    elif grade <= 79 and grade >= 67:
+        print("C")
+    elif grade <= 66 and grade >= 60:
+        print("D")
+    else:
+        print("F")
 
 # 5-BONUS: Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+).
-
+while type(grade) != int:
+    grade = int(input("Enter your numerical score: "))
+else:
+    if grade >= 97:
+        print("A+")
+    elif grade <= 96 and grade >= 93:
+        print("A")
+    elif grade <= 92 and grade >= 88:
+        print("A-")
+    elif grade <= 87 and grade >= 85:
+        print("B+")
+    elif grade <= 84 and grade >= 82:
+        print("B")
+    elif grade <= 81 and grade >= 80:
+        print("B-")
+    elif grade <= 79 and grade >= 75:
+        print("C+")
+    elif grade <= 74 and grade >= 71:
+        print("C")
+    elif grade <= 70 and grade >= 67:
+        print("C-")
+    elif grade <= 66 and grade >= 64:
+        print("D+")
+    elif grade <= 63 and grade >= 62:
+        print("D")
+    elif grade <= 61 and grade >= 60:
+        print("D-")
+    elif grade <= 59 and grade >= 50:
+        print("F+")
+    elif grade <= 49 and grade >= 30:
+        print("F")
+    else:
+        print("F-")
 
 # 6. Create a list of dictionaries where each dictionary represents a book that you have read. 
 #    Each dictionary in the list should have the keys title, author, and genre. Loop through the 
