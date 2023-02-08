@@ -259,7 +259,7 @@ while True:
         POWER = int(POWER)
         if POWER > 0:
             print(f"{'number' : ^20}|{'square' : ^20}|{'cube' : ^20}")
-            print('----------------------------')
+            print('---------------------------------------------')
             for i in range(1, POWER + 1):
                 print(f"{i : ^20}|{i **  2 : ^20}|{i ** 3 : ^20}")
                 continue
