@@ -327,11 +327,30 @@ else:
 # 6. Create a list of dictionaries where each dictionary represents a book that you have read. 
 #    Each dictionary in the list should have the keys title, author, and genre. Loop through the 
 #    list and print out information about each book.
-
+books = [
+    {
+        "title": "FM 3-11",
+        "author": "Army",
+        "genre": "Field Manual"
+    },
+    {
+        "title": "STP 21-10",
+        "author": "Army",
+        "genre": "Soldier Training/Task Procedure"
+    }
+]
 
 # 6a. Prompt the user to enter a genre, then loop through your books list and print out the titles 
 #     of all the books in that genre.
+choice = input("What genre do you want? ('Field Manual', 'Soldier Training/Task Procedure'): ")
 
+for dict in books:
+    if dict["genre"] == choice:
+        dict["title"]
+        break
+    else:
+        print("None found")
+        break
 
 # =======================================================================================================
 # 6 Questions END
