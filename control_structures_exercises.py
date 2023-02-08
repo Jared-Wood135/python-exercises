@@ -197,9 +197,32 @@ else:
 #       - One of the most common interview questions for entry-level programmers is the FizzBuzz test. 
 #         Developed by Imran Ghory, the test is designed to test basic looping and conditional logic skills.
 #       - Write a program that prints the numbers from 1 to 100.
+for i in list(range(1, 101)):
+    i
 #       - For multiples of three print "Fizz" instead of the number
+for i in list(range(1, 101)):
+    if i % 3 == 0:
+        print("Fizz")
+    else:
+        i
 #       - For the multiples of five print "Buzz".
+for i in list(range(1, 101)):
+    if i % 3 == 0:
+        print("Fizz")
+    elif i % 5  == 0:
+        print("Buzz")
+    else:
+        i
 #       - For numbers which are multiples of both three and five print "FizzBuzz".
+for i in list(range(1, 101)):
+    if i % 3 == 0 and i % 5 == 0:
+        print("FizzBuzz")
+    elif i % 3 == 0:
+        print("Fizz")
+    elif i % 5 == 0:
+        print("Buzz")
+    else:
+        i
 
 
 # 4. DISPLAY A TABLE OF POWERS
