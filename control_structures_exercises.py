@@ -4,10 +4,18 @@
 
 # 1. CONDITIONAL BASICS
 # 1a. Prompt the user for a day of the week, print out whether the day is Monday or not.
-
+if input("What day of the week is it?") == 'Monday':
+    print('It is Monday')
+else:
+    print('It is not Monday')
 
 # 1b. prompt the user for a day of the week, print out whether the day is a weekday or a weekend
-
+weekday = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+weekend = ['Saturday', 'Sunday']
+if input("What day of the week is it?") in weekday:
+    print("It's a weekday")
+else:
+    print("It's a weekend")
 
 # 1c. create variables and make up values for
 #       - the number of hours worked in one week
@@ -15,7 +23,14 @@
 #       - how much the week's paycheck will be
 #     write the python code that calculates the weekly paycheck. You get paid time and a half if you 
 #     work more than 40 hours
+hours_worked = 60
+hourly_rate = 20
+hours_worked <= 40 
 
+if hours_worked <= 40:
+    hours_worked * hourly_rate
+else:
+    (40 * hourly_rate) + ((hours_worked - 40) * (hourly_rate * 1.5))
 
 # 2. LOOP BASICS
 # 2a. WHILE
@@ -34,9 +49,21 @@
 #         13
 #         14
 #         15
+i = 5
+while i <= 15:
+    print(i)
+    i += 1
 #       - Create a while loop that will count by 2's starting with 0 and ending at 100. 
 #         Follow each number with a new line.
+a = 0
+while a <= 100:
+    print(a)
+    a += 2
 #       - Alter your loop to count backwards by 5's from 100 to -10.
+b = 100
+while b >= -10:
+    print(b)
+    b += -5
 #       - Create a while loop that starts at 2, and displays the number squared on each line while 
 #         the number is less than 1,000,000. Output should equal:
 #         2
@@ -44,6 +71,10 @@
 #         16
 #         256
 #         65536
+c = 2
+while c < 1000000:
+    print(c)
+    c = c**2
 #       - Write a loop that uses print to create the output shown below.
 #         100
 #         95
@@ -65,7 +96,10 @@
 #         15
 #         10
 #         5
-
+d = 100
+while d >= 5:
+    print(d)
+    d = d - 5
 
 # 2b. FOR LOOPS
 # 2b-i. Write some code that prompts the user for a number, then shows a multiplication table up 
@@ -80,7 +114,10 @@
 #       7 x 8 = 56
 #       7 x 9 = 63
 #       7 x 10 = 70
-
+num = int(input("Enter a number 1-10: "))
+print('7 x', num, '=', 7 * num)
+for num in list(range(1, num + 1)):
+    print('7 x', num, '=', 7 * num)
 
 # 2b-ii. Create a for loop that uses print to create the output shown below.
 #        1
@@ -92,18 +129,24 @@
 #        7777777
 #        88888888
 #        999999999
-
+num2 = int(input("GIMME YO' NUMBER CUZ': "))
+for num2 in list(range(1, num2 + 1)):
+    str(num2) * num2
 
 # 2c. BREAK AND CONTINUE
 # 2c-i. Write a program that prompts the user for a positive integer. Next write a loop that 
 #       prints out the numbers from the number the user entered down to 1.
-
+pos_int = int(input("Only positive numbers here: "))
+for pos_int in reversed(list(range(1, pos_int + 1))):
+    print(pos_int)
 
 # 2c-ii. The input function can be used to prompt for input and use that input in your python code. 
 #        Prompt the user to enter a positive number and write a loop that counts from 0 to that number. 
 #        (Hints: first make sure that the value the user entered is a valid number, also note that the 
 #        input function returns a string, so you'll need to convert this to a numeric type.)
-
+counting = int(input("Feed meh yo' numbah brah: "))
+for counting in list(range(0, counting + 1)):
+    print(counting)
 
 # 2c-iii. Prompt the user for an odd number between 1 and 50. Use a loop and a break statement to 
 #         continue prompting the user if they enter invalid input. (Hint: use the isdigit method on 
@@ -137,7 +180,18 @@
 #         Here is an odd number: 45
 #         Here is an odd number: 47
 #         Here is an odd number: 49
+digit = int(input("Give me some ODD numbers: "))
 
+while digit % 2 == 0:
+    digit = (int(input("Good to know there's someone else who can't read...  AN ODD NUMBER PLEASE: ")))
+else:
+    for digit in list(range(1, digit)):
+        if digit % 2 == 0:
+            pass
+        elif digit == 27:
+            pass
+        else:
+            print("Here is an odd number:", digit)
 
 # 3. FIZZBUZZ
 #       - One of the most common interview questions for entry-level programmers is the FizzBuzz test. 
