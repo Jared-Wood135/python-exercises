@@ -242,24 +242,35 @@ for i in list(range(1, 101)):
 #         3      | 9       | 27
 #         4      | 16      | 64
 #         5      | 25      | 125
-POWER = int(input("IT'S ABOUT POWER...  Squared and cubed power that is! "))
+#POWER = int(input("IT'S ABOUT POWER...  Squared and cubed power that is! "))
 
-while type(POWER) != int:
-    POWER = int(input("IT'S ABOUT POWER...  Squared and cubed power that is! "))
-else:
-    for i in list(range(1, POWER + 1)):
-        i ** 2, i ** 3
+#while type(POWER) != int:
+#    POWER = int(input("IT'S ABOUT POWER...  Squared and cubed power that is! "))
+#else:
+#    for i in list(range(1, POWER + 1)):
+#        i ** 2, i ** 3
         
 
 
 # 4-BONUS: Research python's format string specifiers to align the table
-while type(POWER) != int:
-    POWER = int(input("IT'S ABOUT POWER...  Squared and cubed power that is! "))
-else:
-    for i in list(range(1, POWER + 1)):
-        squared = i ** 2
-        cubed = i ** 3
-        print(f"{i : <10}{squared : ^10}{cubed : >10}")
+while True:
+    POWER = input("IT'S ABOUT POWER... Squared and cubed power that is!  Please input a digit or 'quit' to quit:\n")
+    if POWER.isdigit():
+        POWER = int(POWER)
+        if POWER > 0:
+            print(f"{'number' : ^20}|{'square' : ^20}|{'cube' : ^20}")
+            print('----------------------------')
+            for i in range(1, POWER + 1):
+                print(f"{i : ^20}|{i **  2 : ^20}|{i ** 3 : ^20}")
+                continue
+    again = input("Do you desire MORE POWER??? (Yes/No):\n")
+    if again.lower() == 'Yes':
+        continue
+    elif again.lower() == 'No':
+        break
+    elif POWER == 'quit':
+        print("Until next time then...")
+        break
 
 # 5. CONVERT GIVEN NUMBER GRADES INTO LETTER GRADES
 #       - Prompt the user for a numerical grade from 0 to 100.
