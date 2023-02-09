@@ -140,10 +140,25 @@ def get_letter_grade():
         return print('F <== FFFFFFUUUUUUUUUUUUdge sicle :D')
 get_letter_grade()
 
-
 # 9. Define a function named remove_vowels that accepts a string and returns a string with all the vowels 
 #    removed.
-
+def remove_vowels():
+    '''
+    Takes input string and returns string with all vowels removed
+    '''
+    vowel = ['a', 'e', 'i', 'o', 'u']
+    while True:
+        string = input("Tell me what you want what you really really want, \nI'll tell you what I want what I really really want, \nI wanna, I wanna, I really really really really really WANT TO REMOVE YO' VOWELS...  or 'quit' :D:\n")
+        if string.lower() != 'quit':
+            for char in string.lower():
+                if char in vowel:
+                    string = string.replace(char, '')
+            return print(string, '<== Is this what you want what you really really want?')
+        elif string == 'quit':
+            return print('Guess you don\'t wanna be my lover and you don\'t wanna get with my friends ;-;')
+        else:
+            print(string, '<== Spice Girls don\'t understand what you really really want:\n')
+remove_vowels()
 
 # 10. Define a function named normalize_name. It should accept a string and return a valid python 
 #     identifier, that is:
@@ -155,13 +170,47 @@ get_letter_grade()
 #           - Name will become name
 #           - First Name will become first_name
 #           - % Completed will become completed
-
+def normalize_name():
+    '''
+    Takes in any string and normalizes the string for python
+    '''
+    string = input('Lemme set things straight...  Python style! or \'quit\':\n')
+    if string == 'quit':
+        return print('It\'s not like I wanted to fix it anyhow!')
+    else:
+        newstring = string.strip()
+        newstring = newstring.lower()
+        newstring = ''.join(char for char in newstring if char.isalnum())
+        return print('Your input ==>', string, '\nNew input ==>', newstring)
+normalize_name()
 
 # 11. Write a function named cumulative_sum that accepts a list of numbers and returns a list that is 
 #     the cumulative sum of the numbers in the list.
 #       - cumulative_sum([1, 1, 1]) returns [1, 2, 3]
 #       - cumulative_sum([1, 2, 3, 4]) returns [1, 3, 6, 10]
+def cumulative_sum():
+    list = [input("Give me a list of numbers and I'll sum it for you!\n")]
 
+list = [input('testing')]
+list
+type(list)
+# LIST TO STR
+list2 = ''.join(list)
+list2
+type(list2)
+# STR TO LIST
+list3 = list2.split()
+list3
+type(list3)
+newlist3 = []
+j = 0
+
+lst = []
+n = int(input("Enter a number"))
+for i in range(1, n + 1):
+    ele = int(input())
+    lst.append(ele)
+print(lst)
 
 # =======================================================================================================
 # 11 Exercises END
