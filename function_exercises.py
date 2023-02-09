@@ -102,15 +102,43 @@ calculate_tip()
 #    and return the price after the discount is applied.
 def apply_discount():
     '''
-    
+    Takes original price and discount percent input and returns both as well as the new price
     '''
+    original_price = float(input("What're you buyin'...  Stranger...\n"))
+    discount_percent = float(input("Special discounts for strangers... e.g. 5% = .05\n"))
+    new_price = original_price - (original_price * discount_percent)
+    return print('Original Price:', original_price, '\nDiscount Percent:', discount_percent * 100, '%', '\nNew Price:', new_price)
+apply_discount()
 
 # 7. Define a function named handle_commas. It should accept a string that is a number that contains 
 #    commas in it as input, and return a number as output.
-
+def handle_commas():
+    '''
+    Takes a string input of number with commas (10,000) and returns without commas and as int type (10000)
+    '''
+    string = (input("I love numbers, but hate commas...  Give me a number and I'll show you:\n"))
+    int_convert = int(string.replace(',', ''))
+    return print(int_convert, type(int_convert), '<== Impressive right?!  TELL ME I\'M USEFUL')
+handle_commas()
 
 # 8. Define a function named get_letter_grade. It should accept a number and return the letter grade 
 #    associated with that number (A-F).
+def get_letter_grade():
+    '''
+    Takes a number input and returns a letter grade along with words of wisdom
+    '''
+    number_grade = int(input('WUT NUMBAH YUU GIT ON TEST?\n'))
+    if number_grade >= 90:
+        return print('A <== Y U NO DOCTA YET')
+    elif 89 >= number_grade >= 80:
+        return print('B <== B BETTER DUM DUM')
+    elif 79 >= number_grade >= 70:
+        return print('C <== I C that your skills are lacking')
+    elif 69 >= number_grade >= 60:
+        return print('D <== DISHONAH TO YOUR FAMIREE')
+    else:
+        return print('F <== FFFFFFUUUUUUUUUUUUdge sicle :D')
+get_letter_grade()
 
 
 # 9. Define a function named remove_vowels that accepts a string and returns a string with all the vowels 
