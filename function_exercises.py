@@ -4,7 +4,21 @@
 
 #  1. Define a function named is_two. It should accept one input and return True if the passed input is 
 #     either the number or the string 2, False otherwise.
-
+def is_two():
+    while True:
+        num = input("Enter ye digits or 'quit'!\n")
+        if num.isdigit() == True and num == '2':
+            print(num, "<== This be a string of two!")
+            break
+        elif type(num) == int and num == 2:
+            print(num, "This be an integer of 2!")
+            break
+        elif num.lower() == 'quit':
+            print("Running from your terrible two's are we?")
+            break
+        else:
+            print(num, "<== Neither a string or integer of two!")
+is_two()
 
 # 2. Define a function named is_vowel. It should return True if the passed string is a vowel, False 
 #    otherwise.
