@@ -5,6 +5,10 @@
 #  1. Define a function named is_two. It should accept one input and return True if the passed input is 
 #     either the number or the string 2, False otherwise.
 def is_two():
+    '''
+    Function to identify if an input is string type 2 or integer type 2...
+    Otherwise repeats the function until prompted to quit.
+    '''
     while True:
         num = input("Enter ye digits or 'quit'!\n")
         if num.isdigit() == True and num == '2':
@@ -22,15 +26,63 @@ is_two()
 
 # 2. Define a function named is_vowel. It should return True if the passed string is a vowel, False 
 #    otherwise.
-
+def is_vowel():
+    '''
+    Identifies if a single letter input is a vowel or not...
+    Otherwise repeats the function until prompted to quit.
+    '''
+    vowel = ['a', 'e', 'i', 'o', 'u']
+    while True:
+        letter = input("GIVE ME AN A...  GIVE ME A E...  Or anything really I don't care, just a letter or 'quit':\n")
+        if letter in vowel:
+            print("You got vowel spirit!")
+            break
+        elif letter.lower() == 'quit':
+            print("Aw, what a party pooper!")
+            break
+        else:
+            print(letter, "<== You can do better than that!")
+is_vowel()
 
 # 3. Define a function named is_consonant. It should return True if the passed string is a consonant, 
 #    False otherwise. Use your is_vowel function to accomplish this.
-
+def is_consonant():
+    '''
+    Identifies if a single letter is a consonant or not...
+    Otherwise will repeat the function until prompted to quit.
+    '''
+    vowel = ['a', 'e', 'i', 'o', 'u']
+    while True:
+        letter = input("Back at it again, but with consonant spirit!  Gimme a letter or 'quit':\n")
+        if letter not in vowel:
+            print(letter, "<== Behold the consonant!")
+            break
+        elif letter.lower() == 'quit':
+            print("Keep up your spirit!")
+            break
+        else:
+            print(letter, '<== One more time!')
+is_consonant()
 
 # 4. Define a function that accepts a string that is a word. The function should capitalize the first 
 #    letter of the word if the word starts with a consonant.
-
+def first_letter_consonant_capitalize():
+    '''
+    Identifies if the first letter of a str input is a consonant then capitalizes it...
+    Otherwise, repeats the function until prompted to quit.
+    '''
+    vowel = ['a', 'e', 'i', 'o', 'u']
+    while True:
+        word = input("Throw a word at me and I'll capitilize it!  ONLY IF THE 1ST LETTER IS A CONSONANT...  I'm picky like that or 'quit':\n")
+        if word.isdigit() == False and word[0] not in vowel:
+            print(word.capitalize(), '<== My finest work yet!')
+            break
+        elif word.lower()  == 'quit':
+            print("Guess I really am useless...  Bye ;-;")
+            break
+        else:
+            print(word, "<== C'mon, gimme something to work with here!")
+first_letter_consonant_capitalize()
 
 # 5. Define a function named calculate_tip. It should accept a tip percentage (a number between 0 and 1) 
 #    and the bill total, and return the amount to tip.
