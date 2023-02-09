@@ -224,7 +224,22 @@ print(new_list)
 # - Once you've completed the above exercises, follow the directions from 
 #   https://gist.github.com/zgulde/ec8ed80ad8216905cda83d5645c60886 in order to thouroughly comment 
 #   your code to explain your code.
-
+#       Creates a function called 'sayhello' with a parameter 'name'
+def sayhello(name):
+#       if statement to define if the input of the name meets the string value 'O\'Neil'
+    if name == 'O\'Neil':
+#       if statement is satisfied, message variable is obtained
+        message = 'O\'Neil is the name of my class!'
+#       else statement that defines the input as anything that does not meet the criteria of the above statements
+    else:
+#       if no if statements are satisfied, message variable obtained
+        message = f'Hello, {name}'
+#       Returns the input of whichever message variable the user inputted into the function
+    return message
+#       Validation test for the 1st if statement
+sayhello('O\'Neil')
+#       Validation test for the else statement
+sayhello('Jared')
 
 # =======================================================================================================
 # Additional Exercise (1) END
