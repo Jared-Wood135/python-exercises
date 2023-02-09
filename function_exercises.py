@@ -189,28 +189,31 @@ normalize_name()
 #       - cumulative_sum([1, 1, 1]) returns [1, 2, 3]
 #       - cumulative_sum([1, 2, 3, 4]) returns [1, 3, 6, 10]
 def cumulative_sum():
-    list = [input("Give me a list of numbers and I'll sum it for you!\n")]
-
-list = [input('testing')]
+    list = input("Give me a list of numbers and I'll sum it for you! FORMAT: #, #, #...\n")
+    num_list = [int(x) for x in list if x.isdigit()]
+    cumnum_list = []
+    i = 0
+    for x in range(0, len(num_list)):
+        i += num_list[x]
+        cumnum_list.append(i)
+    print(cumnum_list)
+cumulative_sum()
+# Converts str to int
+list = input('test')
 list
 type(list)
-# LIST TO STR
-list2 = ''.join(list)
-list2
-type(list2)
-# STR TO LIST
-list3 = list2.split()
-list3
-type(list3)
-newlist3 = []
-j = 0
-
-lst = []
-n = int(input("Enter a number"))
-for i in range(1, n + 1):
-    ele = int(input())
-    lst.append(ele)
-print(lst)
+num = [int(x) for x in list if x.isdigit()]
+num
+type(num[0])
+# Cumulation test
+list=[10, 20, 30, 40, 50]
+type(list[0])
+new_list=[]
+j=0
+for i in range(0,len(list)):
+    j+=list[i]
+    new_list.append(j)   
+print(new_list)
 
 # =======================================================================================================
 # 11 Exercises END
