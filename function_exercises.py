@@ -86,11 +86,24 @@ first_letter_consonant_capitalize()
 
 # 5. Define a function named calculate_tip. It should accept a tip percentage (a number between 0 and 1) 
 #    and the bill total, and return the amount to tip.
-
+def calculate_tip():
+    '''
+    Takes a tip input and bill total input then multiplies them to return the tip percent, tip amount, 
+    bill, and grand total
+    '''
+    tip_percent = float(input("What tip percent would you like to apply? e.g. 5% = .05\n"))
+    bill_total = float(input("What is the total cost of your bill?\n"))
+    grand_total = (tip_percent * bill_total) + bill_total
+    return print('Tip Total:', tip_percent * bill_total, '\nTip Percentage:', tip_percent * 100, '%', '\nBill Total:', bill_total, '\nGrand Total:', grand_total)
+#    return print((f"{'Tip Total' : ^20}|{'Tip Percentage' : ^20}|{'Bill Total' : ^20}|{'Grand Total' : ^20}"), '\n'(f"{'----------' : ^20}|{'---------------' : ^20}|{'-----------' : ^20}|{'------------' : ^20}"), '\n'(f"{tip_percent * bill_total : ^20}|{tip_percent : ^20}|{bill_total : ^20}|{(tip_percent * bill_total) + bill_total : ^20}"))
+calculate_tip()
 
 # 6. Define a function named apply_discount. It should accept a original price, and a discount percentage, 
 #    and return the price after the discount is applied.
-
+def apply_discount():
+    '''
+    
+    '''
 
 # 7. Define a function named handle_commas. It should accept a string that is a number that contains 
 #    commas in it as input, and return a number as output.
