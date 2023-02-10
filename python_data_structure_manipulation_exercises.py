@@ -154,6 +154,7 @@ def totalbypet():
     print(f"{'--------------------' : ^20}|{'--------------------' : ^20}")
     print(f"{totalhorse : ^20}|{totalcat : ^20}|{totaldog : ^20}")
 totalbypet()
+issue?
 
 # 4. How many grades does each student have? Do they all have the same number of grades?
 def total_grades():
@@ -190,20 +191,37 @@ totalbycourse()
 
 # 8. What is the average number of pets for students in web development?
 def avgpetsinwebdev():
-    students = (dict for dict in students if 'web development' in dict['course'])
-    totalpets = sum(1 for dict in students)
-    for dict in students:
-        len(students)
+    inwebdev = [dict for dict in students if 'web development' in dict['course']]
+    totalpets = sum(len(dict['pets']) for dict in inwebdev)
+    return print('Average pets per student in web development ==>', round((totalpets / len(inwebdev)), 2))
 avgpetsinwebdev()
 
 # 9. What is the average pet age for students in data science?
-
+Skipping for now...
 
 # 10. What is most frequent coffee preference for data science students?
-
+# IT BE MEDIUM
+def dscoffeepref():
+    indatascience = [dict for dict in students if 'data science' in dict['course']]
+    lightpref = sum([1 for dict in indatascience if 'light' in dict['coffee_preference']])
+    medpref = sum([1 for dict in indatascience if 'medium' in dict['coffee_preference']])
+    darkpref = sum([1 for dict in indatascience if 'dark' in dict['coffee_preference']])
+    print(f"{'Light' : ^20}|{'Medium' : ^20}|{'Dark' : ^20}")
+    print(f"{'--------------------' : ^20}|{'--------------------' : ^20}|{'---------------------' : ^20}")
+    print(f"{lightpref : ^20}|{medpref : ^20}|{darkpref : ^20}")
+dscoffeepref()
 
 # 11. What is the least frequent coffee preference for web development students?
-
+# IT BE BOTH MEDIUM AND DARK
+def webdevcoffeepref():
+    inwebdev = [dict for dict in students if 'web development' in dict['course']]
+    lightpref = sum([1 for dict in inwebdev if 'light' in dict['coffee_preference']])
+    medpref = sum([1 for dict in inwebdev if 'medium' in dict['coffee_preference']])
+    darkpref = sum([1 for dict in inwebdev if 'dark' in dict['coffee_preference']])
+    print(f"{'Light' : ^20}|{'Medium' : ^20}|{'Dark' : ^20}")
+    print(f"{'--------------------' : ^20}|{'--------------------' : ^20}|{'---------------------' : ^20}")
+    print(f"{lightpref : ^20}|{medpref : ^20}|{darkpref : ^20}")
+webdevcoffeepref()
 
 # 12. What is the average grade for students with at least 2 pets?
 
