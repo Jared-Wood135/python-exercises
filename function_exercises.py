@@ -22,7 +22,6 @@ def is_two():
             break
         else:
             print(num, "<== Neither a string or integer of two!")
-is_two()
 
 # 2. Define a function named is_vowel. It should return True if the passed string is a vowel, False 
 #    otherwise.
@@ -42,7 +41,6 @@ def is_vowel():
             break
         else:
             print(letter, "<== You can do better than that!")
-is_vowel()
 
 # 3. Define a function named is_consonant. It should return True if the passed string is a consonant, 
 #    False otherwise. Use your is_vowel function to accomplish this.
@@ -62,7 +60,6 @@ def is_consonant():
             break
         else:
             print(letter, '<== One more time!')
-is_consonant()
 
 # 4. Define a function that accepts a string that is a word. The function should capitalize the first 
 #    letter of the word if the word starts with a consonant.
@@ -82,7 +79,6 @@ def first_letter_consonant_capitalize():
             break
         else:
             print(word, "<== C'mon, gimme something to work with here!")
-first_letter_consonant_capitalize()
 
 # 5. Define a function named calculate_tip. It should accept a tip percentage (a number between 0 and 1) 
 #    and the bill total, and return the amount to tip.
@@ -96,7 +92,6 @@ def calculate_tip():
     grand_total = (tip_percent * bill_total) + bill_total
     return print('Tip Total:', tip_percent * bill_total, '\nTip Percentage:', tip_percent * 100, '%', '\nBill Total:', bill_total, '\nGrand Total:', grand_total)
 #    return print((f"{'Tip Total' : ^20}|{'Tip Percentage' : ^20}|{'Bill Total' : ^20}|{'Grand Total' : ^20}"), '\n'(f"{'----------' : ^20}|{'---------------' : ^20}|{'-----------' : ^20}|{'------------' : ^20}"), '\n'(f"{tip_percent * bill_total : ^20}|{tip_percent : ^20}|{bill_total : ^20}|{(tip_percent * bill_total) + bill_total : ^20}"))
-calculate_tip()
 
 # 6. Define a function named apply_discount. It should accept a original price, and a discount percentage, 
 #    and return the price after the discount is applied.
@@ -108,7 +103,6 @@ def apply_discount():
     discount_percent = float(input("Special discounts for strangers... e.g. 5% = .05\n"))
     new_price = original_price - (original_price * discount_percent)
     return print('Original Price:', original_price, '\nDiscount Percent:', discount_percent * 100, '%', '\nNew Price:', new_price)
-apply_discount()
 
 # 7. Define a function named handle_commas. It should accept a string that is a number that contains 
 #    commas in it as input, and return a number as output.
@@ -119,7 +113,6 @@ def handle_commas():
     string = (input("I love numbers, but hate commas...  Give me a number and I'll show you:\n"))
     int_convert = int(string.replace(',', ''))
     return print(int_convert, type(int_convert), '<== Impressive right?!  TELL ME I\'M USEFUL')
-handle_commas()
 
 # 8. Define a function named get_letter_grade. It should accept a number and return the letter grade 
 #    associated with that number (A-F).
@@ -138,7 +131,6 @@ def get_letter_grade():
         return print('D <== DISHONAH TO YOUR FAMIREE')
     else:
         return print('F <== FFFFFFUUUUUUUUUUUUdge sicle :D')
-get_letter_grade()
 
 # 9. Define a function named remove_vowels that accepts a string and returns a string with all the vowels 
 #    removed.
@@ -158,7 +150,6 @@ def remove_vowels():
             return print('Guess you don\'t wanna be my lover and you don\'t wanna get with my friends ;-;')
         else:
             print(string, '<== Spice Girls don\'t understand what you really really want:\n')
-remove_vowels()
 
 # 10. Define a function named normalize_name. It should accept a string and return a valid python 
 #     identifier, that is:
@@ -182,7 +173,6 @@ def normalize_name():
         newstring = newstring.lower()
         newstring = ''.join(char for char in newstring if char.isalnum())
         return print('Your input ==>', string, '\nNew input ==>', newstring)
-normalize_name()
 
 # 11. Write a function named cumulative_sum that accepts a list of numbers and returns a list that is 
 #     the cumulative sum of the numbers in the list.
@@ -197,23 +187,22 @@ def cumulative_sum():
         i += num_list[x]
         cumnum_list.append(i)
     print(cumnum_list)
-cumulative_sum()
 # Converts str to int
-list = input('test')
-list
-type(list)
-num = [int(x) for x in list if x.isdigit()]
-num
-type(num[0])
+#list = input('test')
+#list
+#type(list)
+#num = [int(x) for x in list if x.isdigit()]
+#num
+#type(num[0])
 # Cumulation test
-list=[10, 20, 30, 40, 50]
-type(list[0])
-new_list=[]
-j=0
-for i in range(0,len(list)):
-    j+=list[i]
-    new_list.append(j)   
-print(new_list)
+#list=[10, 20, 30, 40, 50]
+#type(list[0])
+#new_list=[]
+#j=0
+#for i in range(0,len(list)):
+#    j+=list[i]
+#    new_list.append(j)   
+#print(new_list)
 
 # =======================================================================================================
 # 11 Exercises END
@@ -237,9 +226,9 @@ def sayhello(name):
 #       Returns the input of whichever message variable the user inputted into the function
     return message
 #       Validation test for the 1st if statement
-sayhello('O\'Neil')
+#sayhello('O\'Neil')
 #       Validation test for the else statement
-sayhello('Jared')
+#sayhello('Jared')
 
 # =======================================================================================================
 # Additional Exercise (1) END
@@ -258,7 +247,6 @@ def twelveto24():
     elif ampm.lower() == 'pm':
         hour += 12
     return print('24-Hour Format:', hour, ':', minute)
-twelveto24()
 
 # 1-Bonus. write a function that does the opposite.
 def twentyfourtotwelve():
@@ -271,7 +259,6 @@ def twentyfourtotwelve():
         hour += -12
         ampm = 'PM'
     return print('12-Hour Format:', hour, ':', minute, ampm)
-twentyfourtotwelve()
 
 # 2. Create a function named col_index. It should accept a spreadsheet column name, and return the index 
 #    number of the column.
@@ -286,7 +273,6 @@ def col_index():
         return 2
     elif user.lower == 'aa':
         return 27
-col_index()
 
 # =======================================================================================================
 # BONUS (2) END
