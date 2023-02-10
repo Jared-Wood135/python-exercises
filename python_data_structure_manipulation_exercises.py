@@ -224,7 +224,15 @@ def webdevcoffeepref():
 webdevcoffeepref()
 
 # 12. What is the average grade for students with at least 2 pets?
-
+def avg_grade_atleast_twopets():
+    print(f"{'Student Name' : ^20}|{'Average Grade' : ^20}|{'Total Pets' : ^20}")
+    print(f"{'--------------------' : ^20}|{'--------------------' : ^20}|{'--------------------' : ^20}")   
+    for dict in students:
+        total_pets = len(dict['pets'])
+        avg_grade = sum(dict['grades']) // len(dict['grades'])
+        if total_pets >= 2:
+            print(f"{dict['student'] : ^20}|{avg_grade : ^20}|{total_pets : ^20}")
+avg_grade_atleast_twopets()
 
 # 13. How many students have 3 pets?
 
