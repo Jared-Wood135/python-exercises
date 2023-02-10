@@ -249,17 +249,44 @@ sayhello('Jared')
 
 # 1. Create a function named twelveto24. It should accept a string in the format 10:45am or 4:30pm and 
 #    return a string that is the representation of the time in a 24-hour format. 
-
+def twelveto24():
+    hour = int(input("What 12-Hour format is it?\n"))
+    minute = int(input("What minute is it?\n"))
+    ampm = input("Is it AM or PM?\n")
+    if ampm.lower() == 'am':
+        pass
+    elif ampm.lower() == 'pm':
+        hour += 12
+    return print('24-Hour Format:', hour, ':', minute)
+twelveto24()
 
 # 1-Bonus. write a function that does the opposite.
-
+def twentyfourtotwelve():
+    hour = int(input("What 24-Hour format is it?\n"))
+    minute = int(input("What minute is it?\n"))
+    if 12 >= hour >= 1:
+        hour == 12
+        ampm = 'AM'
+    elif 24 >= hour > 12:
+        hour += -12
+        ampm = 'PM'
+    return print('12-Hour Format:', hour, ':', minute, ampm)
+twentyfourtotwelve()
 
 # 2. Create a function named col_index. It should accept a spreadsheet column name, and return the index 
 #    number of the column.
 #       - col_index('A') returns 1
 #       - col_index('B') returns 2
 #       - col_index('AA') returns 27
-
+def col_index():
+    user = input('Choose \'A\', \'B\', \'AA\':\n')
+    if user.lower == 'a':
+        return 1
+    elif user.lower == 'b':
+        return 2
+    elif user.lower == 'aa':
+        return 27
+col_index()
 
 # =======================================================================================================
 # BONUS (2) END
