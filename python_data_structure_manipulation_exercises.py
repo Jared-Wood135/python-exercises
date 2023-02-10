@@ -136,59 +136,65 @@ len(students)
 
 # 2. How many students prefer light coffee? For each type of coffee roast
 # light = 3 // medium = 5 // dark = 5
-light_pref = sum([1 for dict in students if "light" in dict["coffee_preference"]])
-medium_pref = sum([1 for dict in students if "medium" in dict["coffee_preference"]])
-dark_pref = sum([1 for dict in students if "dark" in dict["coffee_preference"]])
-f"{light_pref : <10}{medium_pref : ^10}{dark_pref : >10}"
+def coffee_pref():
+    light_pref = sum([1 for dict in students if "light" in dict["coffee_preference"]])
+    medium_pref = sum([1 for dict in students if "medium" in dict["coffee_preference"]])
+    dark_pref = sum([1 for dict in students if "dark" in dict["coffee_preference"]])
+    print(f"{'Light' : ^10}|{'Medium' : ^10}|{'Dark' : ^10}")
+    print(f"{'-----' : ^10}|{'------' : ^10}|{'----' : ^10}")
+    print(f"{light_pref : ^10}|{medium_pref : ^10}|{dark_pref : ^10}")
+coffee_pref()
 
 # 3. How many types of each pet are there?
-
-
+def totalbypet():
+    totalcat = sum([1 for dict in students if 'cat' in dict['pets']])
+    totaldog = sum([1 for dict in students if 'dog' in dict['pets']])
+    totalhorse = sum([1 for dict in students if 'horse' in dict['horse']])
+    print(f"{'Horses' : ^20}|{'Cats' : ^20}|{'Dogs' : ^20}")
+    print(f"{'--------------------' : ^20}|{'--------------------' : ^20}")
+    print(f"{totalhorse : ^20}|{totalcat : ^20}|{totaldog : ^20}")
+totalbypet()
 
 # 4. How many grades does each student have? Do they all have the same number of grades?
-test = [50, 60, 70, 80]
-for i in test:
-    i.
-def letter_grade():
+def total_grades():
+    print(f"{'Student Name' : ^20}|{'Total Grades' : ^20}")
+    print(f"{'--------------------' : ^20}|{'--------------------' : ^20}")
     for dict in students:
-        for i in dict['grades']:
-            if i >= 90:
-                i = 'A'
-            elif 89 >= i >= 80:
-                i = 'B'
-            elif 79 >= i >= 70:
-                i = 'C'
-            elif 69 >= i >= 60:
-                i = 'D'
-            elif 59 >= i:
-                i = 'F'
-
-for dict in students:
-        for i in dict['grades']:
-            if i >= 90:
-                dict[i] == 'A'
-            elif 89 >= i >= 80:
-                dict[i] == 'B'
-            elif 79 >= i >= 70:
-                dict[i] == 'C'
-            elif 69 >= i >= 60:
-                dict[i] == 'D'
-            elif 59 >= i:
-                [i] == 'F'
-        dict['grades']
-
+        print(f"{dict['student'] : ^20}|{len(dict['grades']) : ^20}")
+total_grades()
 
 # 5. What is each student's grade average?
-
+def avg_grade():
+    print(f"{'Student Name' : ^20}|{'Average Grade' : ^20}")
+    print(f"{'--------------------' : ^20}|{'--------------------' : ^20}")
+    for dict in students:
+        avg = sum(dict['grades']) // len(dict['grades'])
+        print(f"{dict['student'] : ^20}|{avg : ^20}")
+avg_grade()
 
 # 6. How many pets does each student have?
-
+def total_pets():
+    print(f"{'Student Name' : ^20}|{'Total Pets' : ^20}")
+    print(f"{'--------------------' : ^20}|{'--------------------' : ^20}")
+    for dict in students:
+        print(f"{dict['student'] : ^20}|{len(dict['pets']) : ^20}")
+total_pets()
 
 # 7. How many students are in web development? data science?
-
+def totalbycourse():
+    web_dev = sum([1 for dict in students if 'web development' in dict['course']])
+    data_science = sum([1 for dict in students if 'data science' in dict['course']])
+    print(f"{'Web Development' : ^20}|{'Data Science' : ^20}")
+    print(f"{web_dev : ^20}|{data_science : ^20}")
+totalbycourse()
 
 # 8. What is the average number of pets for students in web development?
-
+def avgpetsinwebdev():
+    students = (dict for dict in students if 'web development' in dict['course'])
+    totalpets = sum(1 for dict in students)
+    for dict in students:
+        len(students)
+avgpetsinwebdev()
 
 # 9. What is the average pet age for students in data science?
 
