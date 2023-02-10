@@ -6,7 +6,8 @@
 #    different way:
 # 1a. Run an interactive python session and import the module. Call the is_vowel function using the 
 #     . syntax.
-
+from function_exercises import is_two
+is_two()
 
 # 1b. Create a file named import_exericses.py. Within this file, use from to import the calculate_tip 
 #     function directly. Call this function with values you choose and print the result.
