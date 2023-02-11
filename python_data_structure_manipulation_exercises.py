@@ -211,7 +211,15 @@ def avgpetsinwebdev():
 avgpetsinwebdev()
 
 # 9. What is the average pet age for students in data science?
-Skipping for now...
+def petlist():
+    petlist = []
+    agelist = []
+    for student in students:
+        for pet in student['pets']:
+            petlist.append(pet['species'])
+            agelist.append(int(pet['age']))
+    print('Average age per pet ==>', round(sum(agelist) // len(petlist), 2))
+petlist()
 
 # 10. What is most frequent coffee preference for data science students?
 # IT BE MEDIUM
@@ -249,10 +257,23 @@ def avg_grade_atleast_twopets():
 avg_grade_atleast_twopets()
 
 # 13. How many students have 3 pets?
-
+def students_with_threepets():
+    hasthreepets = []
+    for student in students:
+        totalpets = len(student['pets'])
+        if totalpets == 3:
+            hasthreepets.append(student)
+    print('Total students with 3 pets ==>', len(hasthreepets))
+students_with_threepets()
+alternate = ([dict for dict in students if len(dict['pets']) == 3])
+print('Total students with 3 pets ==>', len(alternate))
 
 # 14. What is the average grade for students with 0 pets?
-
+nopets = ([dict for dict in students if len(dict['pets']) == 0])
+totalbystudent = sum([sum(dict['grades']) for dict in nopets])
+lengthbystudent = sum([len(dict['grades']) for dict in nopets])
+avg = round((totalbystudent // lengthbystudent), 2)
+print('Average grade for students with no pets ==>', avg)
 
 # 15. What is the average grade for web development students? data science students?
 
