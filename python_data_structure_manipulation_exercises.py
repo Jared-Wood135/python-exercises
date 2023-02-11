@@ -293,7 +293,12 @@ def avggrade_datascience():
 print(f"{avggrade_webdev()}\n{avggrade_datascience()}")
 
 # 16. What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
-
+def avggrade_darkcoffee():
+    darkcoffee = ([dict for dict in students if 'dark' in dict['coffee_preference']])
+    avgbystudent = ([(sum(dict['grades']) // len(dict['grades'])) for dict in darkcoffee])
+    revrange = print(list(reversed(range(min(avgbystudent), max(avgbystudent) + 1))))
+    revrange
+avggrade_darkcoffee()
 
 # 17. What is the average number of pets for medium coffee drinkers?
 
