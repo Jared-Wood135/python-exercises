@@ -335,6 +335,14 @@ def avgnamelength():
 avgnamelength()
 
 # 20. What is the highest pet age for light coffee drinkers?
+def maxpetage_lightcoffee():
+    lightcoffee = ([student for student in students if 'light' in student['coffee_preference']])
+    petages = []
+    for student in students:
+        for pet in student['pets']:
+            petages.append(pet['age'])
+    print('Oldest pet age for light coffee drinkers ==>', max(petages),'Years Old')
+maxpetage_lightcoffee()
 
 # =======================================================================================================
 # 20 Questions END
