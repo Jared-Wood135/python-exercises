@@ -301,7 +301,12 @@ def avggrade_darkcoffee():
 avggrade_darkcoffee()
 
 # 17. What is the average number of pets for medium coffee drinkers?
-
+def avgpets_medcoffee():
+    medcoffee = ([dict for dict in students if 'medium' in dict['coffee_preference']])
+    totalpets = sum([len(dict['pets']) for dict in medcoffee])
+    print(len(medcoffee))
+    print('Average pets for medium coffee drinkers ==>', (totalpets // len(medcoffee)))
+avgpets_medcoffee()
 
 # 18. What is the most common type of pet for web development students?
 
