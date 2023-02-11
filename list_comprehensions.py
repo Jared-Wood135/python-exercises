@@ -117,13 +117,13 @@ numbers_plus_5
 
 # Make a variable named "primes" that is a list containing the prime numbers in the numbers list. 
 # *Hint* you may want to make or find a helper function that determines if a given number is prime or not.
-temp = [1, 2, 3, 4]
-temp2 = [int for int in numbers if int for int in list(range(2, int - 1) if int % 2 != 0)]
-temp3 = [n for n in list(range(2, 4)) if n % 2 != 0]
-temp3
-temp2
-list(range(2, 5 - 1))
-list(range(2, 4))
+for n in numbers:
+    for x in range(2, n):
+        if n % x == 0:
+            print(n, '=', x, '*', n//x)
+            break
+    else:
+        print(n, 'is a prime number')
 
 # =======================================================================================================
 # BONUS Exercise END
