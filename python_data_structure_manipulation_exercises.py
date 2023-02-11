@@ -147,14 +147,28 @@ coffee_pref()
 
 # 3. How many types of each pet are there?
 def totalbypet():
-    totalcat = sum([1 for dict in students if 'cat' in dict['pets']])
-    totaldog = sum([1 for dict in students if 'dog' in dict['pets']])
-    totalhorse = sum([1 for dict in students if 'horse' in dict['horse']])
-    print(f"{'Horses' : ^20}|{'Cats' : ^20}|{'Dogs' : ^20}")
-    print(f"{'--------------------' : ^20}|{'--------------------' : ^20}")
-    print(f"{totalhorse : ^20}|{totalcat : ^20}|{totaldog : ^20}")
+    totalcat = 0
+    totaldog = 0
+    totalhorse = 0
+    for student in students:
+        for pets in student['pets']:
+            if pets['species'] == 'cat':
+                totalcat += 1
+            elif pets['species'] == 'dog':
+                totaldog += 1
+            elif pets['species'] == 'horse':
+                totalhorse += 1
+    print(f"{'Total Cats' : ^20}|{'Total Dogs' : ^20}|{'Total Horses' : ^20}")
+    print(f"{'----------' : ^20}|{'----------' : ^20}|{'------------' : ^20}")
+    print(f"{totalcat : ^20}|{totaldog : ^20}|{totalhorse : ^20}")
 totalbypet()
-issue?
+def uniquepets():
+    species_list = []
+    for student in students:
+        for pet in student['pets']:
+            species_list.append(pet['species'])
+    print(set(species_list))
+uniquepets()
 
 # 4. How many grades does each student have? Do they all have the same number of grades?
 def total_grades():
