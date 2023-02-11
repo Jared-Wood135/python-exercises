@@ -154,6 +154,8 @@ len(password) >= 5 and len(username) <= 20 and username != password
 
 # 1. For practicing with list comprehensions, work through 17 List Comprehension Exercises. Add your 
 #    solutions to a new file named list_comprehensions.py
+# COMPLETED
 
 # 2. For even more practice with all your Python tools together, work through 20 Python Data Structure 
 #    Manipulation Exercises. Name this file python_data_structure_manipulation_exercises.py.
+# COMPLETED
