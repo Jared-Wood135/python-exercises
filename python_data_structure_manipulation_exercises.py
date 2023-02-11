@@ -309,10 +309,30 @@ def avgpets_medcoffee():
 avgpets_medcoffee()
 
 # 18. What is the most common type of pet for web development students?
-
+def pets_groupedby_webdev():
+    inwebdev = ([student for student in students if 'web development' in student['course']])
+    totalcat = 0
+    totaldog = 0
+    totalhorse = 0
+    for student in inwebdev:
+        for pet in student['pets']:
+            if pet['species'] == 'cat':
+                totalcat += 1
+            elif pet['species'] == 'dog':
+                totaldog += 1
+            elif pet['species'] == 'horse':
+                totalhorse += 1
+    print(f"{'Total Cats' : ^20}|{'Total Dogs' : ^20}|{'Total Horses' : ^20}")
+    print(f"{'----------' : ^20}|{'----------' : ^20}|{'------------' : ^20}")
+    print(f"{totalcat : ^20}|{totaldog : ^20}|{totalhorse : ^20}")
+pets_groupedby_webdev()
 
 # 19. What is the average name length?
-
+def avgnamelength():
+    namelengthtotal = sum([len(dict['student']) for dict in students])
+    avg = namelengthtotal // len(students)
+    print('Average name length ==>', avg)
+avgnamelength()
 
 # 20. What is the highest pet age for light coffee drinkers?
 
