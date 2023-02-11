@@ -269,14 +269,28 @@ alternate = ([dict for dict in students if len(dict['pets']) == 3])
 print('Total students with 3 pets ==>', len(alternate))
 
 # 14. What is the average grade for students with 0 pets?
-nopets = ([dict for dict in students if len(dict['pets']) == 0])
-totalbystudent = sum([sum(dict['grades']) for dict in nopets])
-lengthbystudent = sum([len(dict['grades']) for dict in nopets])
-avg = round((totalbystudent // lengthbystudent), 2)
-print('Average grade for students with no pets ==>', avg)
+def avggrade_0pets():
+    nopets = ([dict for dict in students if len(dict['pets']) == 0])
+    totalbystudent = sum([sum(dict['grades']) for dict in nopets])
+    lengthbystudent = sum([len(dict['grades']) for dict in nopets])
+    avg = round((totalbystudent // lengthbystudent), 2)
+    print('Average grade for students with no pets ==>', avg)
+avggrade_0pets()
 
 # 15. What is the average grade for web development students? data science students?
-
+def avggrade_webdev():
+    inwebdev = ([dict for dict in students if 'web development' in dict['course']])
+    totalbystudent = sum([sum(dict['grades']) for dict in inwebdev])
+    lengthbystudent = sum([len(dict['grades']) for dict in inwebdev])
+    avg = round((totalbystudent // lengthbystudent), 2)
+    return('Average grade in web development ==>', avg)
+def avggrade_datascience():
+    indatascience = ([dict for dict in students if 'data science' in dict['course']])
+    totalbystudent = sum([sum(dict['grades']) for dict in indatascience])
+    lengthbystudent = sum([len(dict['grades']) for dict in indatascience])
+    avg = round((totalbystudent // lengthbystudent), 2)
+    return('Average grade in data science ==>', avg)
+print(f"{avggrade_webdev()}\n{avggrade_datascience()}")
 
 # 16. What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
 
