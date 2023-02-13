@@ -22,12 +22,21 @@
 #           - Display current balance
 #       - Add A Debit(Withdrawl)
 #           - Ask for input
-#           - Add *Additional - id*, time, amount to csv
+#           - Add id, time, amount to csv
 #       - Add A Credit(Deposit)
 #           - Ask for input
-#           - Add *Additional - id*, time, amount to csv
+#           - Add id, time, amount to csv
 #       - Exit
 #           - break function
+#       EXTRA:
+#           -   X   HISTORICAL TRANSACTIONS
+#           -       CATEGORY PER TRANSACTION
+#           -       SUMMARY BY CATEGORY
+#           -   X   DATE-TIME
+#           -       TRANSACTION BY DAY
+#           -       OPTIONAL DESCRIPTION INPUT
+#           -       TRANSACTIONS BY DESCRIPTION INPUT
+#           -       OPTIONAL PAST MODIFICATION
 
 # =======================================================================================================
 # PLANNING END
