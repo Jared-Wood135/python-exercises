@@ -50,10 +50,9 @@ def menu():
     Main Menu for checkbook
     '''
     while True:
-        print("(1) -- View Current Balance")
-        print("(2) -- Add A Debit (Withdrawl)")
-        print("(3) -- Add A Credit (Deposit)")
-        print("(4) -- Exit Program")
+        print(f"{'View Current Balance' : ^25}|{'Add A Debit (Withdrawl)' : ^25}|{'Add A Credit (Deposit)' : ^25}|{'Exit Program' : ^25}")
+        print(f"{'-------------------------' : ^25}|{'-------------------------' : ^25}|{'-------------------------' : ^25}|{'-------------------------' : ^25}")
+        print(f"{1 : ^25}|{2 : ^25}|{3 : ^25}|{4 : ^25}")
         menuin = input("Hello!  What would you like to do?\n")
         if menuin == '1':
             balance()
@@ -120,9 +119,9 @@ def withdrawl():
     os.chdir('python-exercises')
     #print(os.getcwd())
     # vvv INITIAL MENU vvv
-    print('(1) Make A Withdrawl')
-    print('(2) All Withdrawls')
-    print('(3) Back To Main Menu')
+    print(f"{'Make A Withdrawl' : ^25}|{'All Withdrawls' : ^25}|{'Back To Main Menu' : ^25}")
+    print(f"{'-------------------------' : ^25}|{'-------------------------' : ^25}|{'-------------------------' : ^25}")
+    print(f"{1 : ^25}|{2 : ^25}|{3 : ^25}")
     menuin = input("Welcome to the 'Withdrawl Menu'!  What would you like to do?\n")
     while True:
         # vvv MAKE A WITHDRAW vvv
@@ -143,7 +142,12 @@ def withdrawl():
                             'amount' : 0
                         }
                     )
-                withdrawl()
+                if os.path.exists('command_line_checkbook_withdrawl.csv') == True:
+                    print("Successfully created file...\nReturning to 'Main Menu'")
+                    break
+                else:
+                    print("Failed to create file...\nReturning to 'Main Menu'")
+                    break
             # vvv IF CSV FILE EXIST... EDIT FILE vvv
             elif os.path.exists('command_line_checkbook_withdrawl.csv'):
                 # vvv MAX ID VALUE FROM CSV
@@ -162,7 +166,8 @@ def withdrawl():
                             'amount' : withdrawin
                         }
                     )
-                withdrawl()
+                print(f"${withdrawin} logged on {datetime()}...\nReturning to 'Main Menu'")
+                break
         # vvv IF USER WANTS ALL WITHDRAWLS vvv
         elif menuin == '2':
             cols = ['id', 'time', 'amount']
@@ -172,13 +177,13 @@ def withdrawl():
                 for line in reader:
                     lines.append(line)
                 print(lines)
-            withdrawl()
+            break
         # vvv IF USER INPUT WANTS TO GO BACK TO MAIN MENU vvv    
         elif menuin == '3':
-            menu()
+            break
         # vvv IF INPUT IS INVALID vvv
         else:
-            print("Invalid input, changing to Main Menu")
+            print("Invalid input...\nReturning to 'Main Menu'")
     
 # ====================> DEPOSIT FUNCTION <====================
 def deposit():
@@ -196,9 +201,9 @@ def deposit():
     os.chdir('python-exercises')
     #print(os.getcwd())
     # vvv INITIAL MENU vvv
-    print('(1) Make A Deposit')
-    print('(2) All Deposits')
-    print('(3) Back To Main Menu')
+    print(f"{'Make A Deposit' : ^25}|{'All Deposits' : ^25}|{'Back To Main Menu' : ^25}")
+    print(f"{'-------------------------' : ^25}|{'-------------------------' : ^25}|{'-------------------------' : ^25}")
+    print(f"{1 : ^25}|{2 : ^25}|{3 : ^25}")
     menuin = input("Welcome to the 'Deposit Menu'!  What would you like to do?\n")
     while True:
         # vvv MAKE A DEPOSIT vvv
@@ -219,7 +224,12 @@ def deposit():
                             'amount' : 0
                         }
                     )
-                deposit()
+                if os.path.exists('command_line_checkbook_deposit.csv') == True:
+                    print("Successfully created file...\nReturning to 'Main Menu'")
+                    break
+                else:
+                    print("Failed to create file...\nReturning to 'Main Menu'")
+                    break
             # vvv IF CSV FILE EXIST... EDIT FILE vvv
             elif os.path.exists('command_line_checkbook_deposit.csv'):
                 # vvv MAX ID VALUE FROM CSV
@@ -238,7 +248,8 @@ def deposit():
                             'amount' : depositin
                         }
                     )
-                deposit()
+                print(f"${depositin} logged on {datetime()}...\nReturning to 'Main Menu'")
+                break
         # vvv IF USER WANTS ALL DEPOSITS vvv
         elif menuin == '2':
             cols = ['id', 'time', 'amount']
@@ -248,10 +259,10 @@ def deposit():
                 for line in reader:
                     lines.append(line)
                 print(lines)
-            deposit()
+            break
         # vvv IF USER INPUT WANTS TO GO BACK TO MAIN MENU vvv    
         elif menuin == '3':
-            menu()
+            break
         # vvv IF INPUT IS INVALID vvv
         else:
             print("Invalid input, changing to Main Menu")
