@@ -137,7 +137,7 @@ def balance():
         allwithdrawls = ([float(row['amount']) for row in reader if 'withdrawl' in row['category']])
         totalwithdrawls = sum(allwithdrawls)
     # vvv CURRENT BALANCE vvv
-    print(f"\033[32m${totaldeposits - totalwithdrawls}\033[0m as of {date()} // {time()}")
+    print(f"\033[32m${totaldeposits - totalwithdrawls}\033[0m as of \033[36m{date()}\033[0m // \033[36m{time()}\033[0m")
     print("")
 
 # ====================> WITHDRAW FUNCTION <====================
@@ -168,7 +168,7 @@ def withdrawl():
             cols = ['id', 'date', 'time', 'category', 'amount', 'description']    
             # vvv IF CSV FILE DOESN'T EXIST...  CREATE FILE vvv
             if os.path.exists('command_line_checkbook_transactions.csv') == False:
-                print("Creating 'command_line_checkbook_transactions.csv' file...")
+                print("Creating \033[33m'command_line_checkbook_transactions.csv'\033[0m file...")
                 with open('command_line_checkbook_transactions.csv', 'w') as f:
                     writer = csv.DictWriter(f, fieldnames = cols)
                     writer.writeheader()
@@ -183,12 +183,10 @@ def withdrawl():
                         }
                     )
                 if os.path.exists('command_line_checkbook_transactions.csv') == True:
-                    print("Successfully created file...\nReturning to 'Main Menu'")
-                    print("")
+                    print("Successfully created file...\nReturning to \033[33m'Main Menu'\033[0m\n")
                     break
                 else:
-                    print("Failed to create file...\nReturning to 'Main Menu'")
-                    print("")
+                    print("Failed to create file...\nReturning to \033[33m'Main Menu'\033[0m\n")
                     break
             # vvv IF CSV FILE EXIST... EDIT FILE vvv
             elif os.path.exists('command_line_checkbook_transactions.csv'):
@@ -222,7 +220,7 @@ def withdrawl():
                             }
                         )
                     clear()
-                    print(f"\033[32m${withdrawin}\033[0m logged on {time()}...\n\033[33m{descin}\033[0m inputted into description...\nReturning to \033[33m'Main Menu'\033[0m")
+                    print(f"\033[32m${withdrawin}\033[0m logged on \033[36m{time()}\033[0m...\n\033[33m{descin}\033[0m inputted into description...\nReturning to \033[33m'Main Menu'\033[0m")
                     print("")
                     break
                 else:
@@ -239,7 +237,7 @@ def withdrawl():
                             }
                         )
                     clear()
-                    print(f"\033[32m${withdrawin}\033[0m logged on {time()}...\nReturning to \033[33m'Main Menu'\033[0m")
+                    print(f"\033[32m${withdrawin}\033[0m logged on \033[36m{time()}\033[0m...\nReturning to \033[33m'Main Menu'\033[0m")
                     print("")
                     break
         # vvv IF USER WANTS SUMMARY OF WITHDRAWLS vvv
@@ -294,7 +292,7 @@ def deposit():
             cols = ['id', 'date', 'time', 'category', 'amount', 'description']    
             # vvv IF CSV FILE DOESN'T EXIST...  CREATE FILE vvv
             if os.path.exists('command_line_checkbook_transactions.csv') == False:
-                print("Creating 'command_line_checkbook_transactions.csv' file...")
+                print("Creating \033[33m'command_line_checkbook_transactions.csv'\033[0m file...")
                 with open('command_line_checkbook_transactions.csv', 'w') as f:
                     writer = csv.DictWriter(f, fieldnames = cols)
                     writer.writeheader()
@@ -309,12 +307,10 @@ def deposit():
                         }
                     )
                 if os.path.exists('command_line_checkbook_transactions.csv') == True:
-                    print("Successfully created file...\nReturning to \033[33m'Main Menu'\033[0m")
-                    print("")
+                    print("Successfully created file...\nReturning to \033[33m'Main Menu'\033[0m\n")
                     break
                 else:
-                    print("Failed to create file...\nReturning to \033[33m'Main Menu'\033[0m")
-                    print("")
+                    print("Failed to create file...\nReturning to \033[33m'Main Menu'\033[0m\n")
                     break
             # vvv IF CSV FILE EXIST... EDIT FILE vvv
             elif os.path.exists('command_line_checkbook_transactions.csv'):
@@ -348,7 +344,7 @@ def deposit():
                             }
                         )
                     clear()
-                    print(f"\033[32m${depositin}\033[0m logged on {time()}...\n\033[33m{descin}\033[0m inputted into description...\nReturning to \033[33m'Main Menu'\033[0m")
+                    print(f"\033[32m${depositin}\033[0m logged on \033[36m{time()}\033[0m...\n\033[33m{descin}\033[0m inputted into description...\nReturning to \033[33m'Main Menu'\033[0m")
                     print("")
                     break
                 else:
@@ -365,7 +361,7 @@ def deposit():
                             }
                         )
                     clear()
-                    print(f"\033[32m${depositin}\033[0m logged on {time()}...\nReturning to \033[33m'Main Menu'\033[0m")
+                    print(f"\033[32m${depositin}\033[0m logged on \033[36m{time()}\033[0m...\nReturning to \033[33m'Main Menu'\033[0m")
                     print("")
                 break
         # vvv IF USER WANTS SUMMARY OF DEPOSITS vvv
