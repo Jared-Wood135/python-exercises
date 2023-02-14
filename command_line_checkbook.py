@@ -11,6 +11,7 @@
 #           - WITHDRAWL
 #           - DEPOSIT
 #           - HISTORY
+#           - SPECIFIC QUERY
 #           - CLEAR TERMINAL
 #           - DELETE HISTORY
 #       END PRODUCT
@@ -62,7 +63,8 @@ def menu():
               "\033[36m(2) Add A Debit (Withdrawl)\033[0m\n"
               "\033[36m(3) Add A Credit (Deposit)\033[0m\n"
               "\033[36m(4) History of Transactions\033[0m\n"
-              "\033[36m(5) Exit Program\033[0m\n"
+              "\033[36m(5) Specific Query\033[0m\n"
+              "\033[36m(6) Exit Program\033[0m\n"
               "\033[31m(DELETE) DELETE HISTORY\033[0m\n"
              )
         menuin = input("Hello!  What would you like to do?\n")
@@ -79,6 +81,9 @@ def menu():
             clear()
             history()
         elif menuin == '5':
+            clear()
+            query()
+        elif menuin == '6':
             clear()
             print("Goodbye!")
             break
@@ -449,6 +454,34 @@ def DELETE():
             clear()
             print("Invalid input...\nReturning to \033[33m'Main Menu'\033[0m\n")
             break
+
+# ====================> SPECIFIC QUERY FUNCTION <====================
+def query():
+    # vvv IMPORTS vvv
+    import os
+    import csv
+    # vvv os.chdir vvv
+    os.chdir(os.path.expanduser('~'))
+    os.chdir('codeup-data-science')
+    os.chdir('python-exercises')
+    # vvv BODY/OUTPUT vvv
+    columns = ['id', 'date', 'time', 'category', 'amount', 'description']
+    user = input('What would you like to query by?\n\033[33m(id, date, time, category, amount, description)\033[0m\n')
+    if user.lower() in columns:
+        userdesc = input('What are you looking for?\n')
+        with open('command_line_checkbook_transactions.csv', 'r') as f:
+            reader = csv.DictReader(f)
+            next(reader)
+            test = ([row for row in reader if userdesc.lower() in row[user.lower()]])
+            print(f"\033[33m{'id' : ^20}\033[0m | \033[33m{'date' : ^20}\033[0m | \033[33m{'time' : ^20}\033[0m | \033[33m{'category' : ^20}\033[0m | \033[33m{'amount' : ^20}\033[0m | \033[33m{'description' : ^20}\033[0m")
+            print(f"\033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m")
+            for dict in test:
+                print(f"\033[36m{dict['id'] : ^20}\033[0m | \033[36m{dict['date'] : ^20}\033[0m | \033[36m{dict['time'] : ^20}\033[0m | \033[36m{dict['category'] : ^20}\033[0m | \033[32m{dict['amount'] : ^20}\033[0m | \033[36m{dict['description'] : ^20}\033[0m")
+                print(f"\033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m")
+    else:
+        clear()
+        print("Invalid input...\nReturning to \033[33m'Main Menu'\033[0m\n")
+query()
 
 # =======================================================================================================
 # FUNCTIONS END
