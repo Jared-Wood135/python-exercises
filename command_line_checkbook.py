@@ -55,13 +55,14 @@ def menu():
     # vvv BODY/OUTPUT vvv
     clear()
     while True:
-        print("==>  MAIN MENU <==")
-        print("(1) View Current Balance")
-        print("(2) Add A Debit (Withdrawl)")
-        print("(3) Add A Credit (Deposit)")
-        print("(4) History of Transactions")
-        print("(5) Exit Program")
-        print("")
+        print(
+              "==>  MAIN MENU <==\n\n"
+              "(1) View Current Balance\n"
+              "(2) Add A Debit (Withdrawl)\n"
+              "(3) Add A Credit (Deposit)\n"
+              "(4) History of Transactions\n"
+              "(5) Exit Program\n"
+             )
         menuin = input("Hello!  What would you like to do?\n")
         if menuin == '1':
             clear()
@@ -147,11 +148,12 @@ def withdrawl():
     os.chdir('codeup-data-science')
     os.chdir('python-exercises')
     # vvv INITIAL MENU vvv
-    print("==> WITHDRAWL MENU <==")
-    print("(1) Make A Withdrawl")
-    print("(2) Summary of Withdrawls")
-    print("(3) Back To Main Menu")
-    print("")
+    print(
+          "==> WITHDRAWL MENU <==\n\n"
+          "(1) Make A Withdrawl\n"
+          "(2) Summary of Withdrawls\n"
+          "(3) Back To Main Menu\n"
+         )
     menuin = input("Welcome to the 'Withdrawl Menu'!  What would you like to do?\n")
     while True:
         # vvv MAKE A WITHDRAW vvv
@@ -246,11 +248,12 @@ def deposit():
     os.chdir('codeup-data-science')
     os.chdir('python-exercises')
     # vvv INITIAL MENU vvv
-    print("==> DEPOSIT MENU <==")
-    print("(1) Make A Deposit")
-    print("(2) Summary of Deposits")
-    print("(3) Back To Main Menu")
-    print("")
+    print(
+          "==> DEPOSIT MENU <==\n\n"
+          "(1) Make A Deposit\n"
+          "(2) Summary of Deposits\n"
+          "(3) Back To Main Menu\n"
+         )
     menuin = input("Welcome to the 'Deposit Menu'!  What would you like to do?\n")
     while True:
         # vvv MAKE A DEPOSIT vvv
