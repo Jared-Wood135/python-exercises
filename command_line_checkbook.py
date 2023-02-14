@@ -113,11 +113,8 @@ def withdrawl():
     import csv
     # vvv os.chdir vvv
     os.chdir(os.path.expanduser('~'))
-    #print(os.getcwd())
     os.chdir('codeup-data-science')
-    #print(os.getcwd())
     os.chdir('python-exercises')
-    #print(os.getcwd())
     # vvv INITIAL MENU vvv
     print(f"{'Make A Withdrawl' : ^25}|{'All Withdrawls' : ^25}|{'Back To Main Menu' : ^25}")
     print(f"{'-------------------------' : ^25}|{'-------------------------' : ^25}|{'-------------------------' : ^25}")
@@ -172,11 +169,13 @@ def withdrawl():
         elif menuin == '2':
             cols = ['id', 'time', 'amount']
             with open('command_line_checkbook_withdrawl.csv', 'r') as f:
-                reader = csv.DictReader(f, fieldnames = cols)
-                lines = []
-                for line in reader:
-                    lines.append(line)
-                print(lines)
+                rows = f.readlines()
+                headers = rows[0].strip().split(',')
+                print(" | ".join(headers))
+                print("-" * (len(headers) * 3))
+                for row in rows[1:]:
+                    data = row.strip().split(',')
+                    print(" | ".join(data))
             break
         # vvv IF USER INPUT WANTS TO GO BACK TO MAIN MENU vvv    
         elif menuin == '3':
@@ -195,11 +194,8 @@ def deposit():
     import csv
     # vvv os.chdir vvv
     os.chdir(os.path.expanduser('~'))
-    #print(os.getcwd())
     os.chdir('codeup-data-science')
-    #print(os.getcwd())
     os.chdir('python-exercises')
-    #print(os.getcwd())
     # vvv INITIAL MENU vvv
     print(f"{'Make A Deposit' : ^25}|{'All Deposits' : ^25}|{'Back To Main Menu' : ^25}")
     print(f"{'-------------------------' : ^25}|{'-------------------------' : ^25}|{'-------------------------' : ^25}")
@@ -254,11 +250,13 @@ def deposit():
         elif menuin == '2':
             cols = ['id', 'time', 'amount']
             with open('command_line_checkbook_deposit.csv', 'r') as f:
-                reader = csv.DictReader(f, fieldnames = cols)
-                lines = []
-                for line in reader:
-                    lines.append(line)
-                print(lines)
+                rows = f.readlines()
+                headers = rows[0].strip().split(',')
+                print(" | ".join(headers))
+                print("-" * (len(headers) * 3))
+                for row in rows[1:]:
+                    data = row.strip().split(',')
+                    print(" | ".join(data))
             break
         # vvv IF USER INPUT WANTS TO GO BACK TO MAIN MENU vvv    
         elif menuin == '3':
