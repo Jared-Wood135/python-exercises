@@ -12,6 +12,7 @@
 #           - DEPOSIT
 #           - HISTORY
 #           - CLEAR TERMINAL
+#           - DELETE HISTORY
 #       END PRODUCT
 
 # =======================================================================================================
@@ -37,7 +38,7 @@
 #           -   X   SUMMARY BY CATEGORY
 #           -   X   DATE-TIME
 #           -       TRANSACTION BY DAY
-#           -       OPTIONAL DESCRIPTION INPUT
+#           -   X   OPTIONAL DESCRIPTION INPUT
 #           -       TRANSACTIONS BY DESCRIPTION INPUT
 #           -       OPTIONAL PAST MODIFICATION
 
@@ -56,12 +57,13 @@ def menu():
     clear()
     while True:
         print(
-              "==>  MAIN MENU <==\n\n"
-              "(1) View Current Balance\n"
-              "(2) Add A Debit (Withdrawl)\n"
-              "(3) Add A Credit (Deposit)\n"
-              "(4) History of Transactions\n"
-              "(5) Exit Program\n"
+              "\033[33m==>  MAIN MENU <==\033[0m\n\n"
+              "\033[36m(1) View Current Balance\033[0m\n"
+              "\033[36m(2) Add A Debit (Withdrawl)\033[0m\n"
+              "\033[36m(3) Add A Credit (Deposit)\033[0m\n"
+              "\033[36m(4) History of Transactions\033[0m\n"
+              "\033[36m(5) Exit Program\033[0m\n"
+              "\033[31m(DELETE) DELETE HISTORY\033[0m\n"
              )
         menuin = input("Hello!  What would you like to do?\n")
         if menuin == '1':
@@ -80,6 +82,9 @@ def menu():
             clear()
             print("Goodbye!")
             break
+        elif menuin == 'DELETE':
+            clear()
+            DELETE()
         else:
             clear()
             print("Invalid input")
@@ -132,7 +137,7 @@ def balance():
         allwithdrawls = ([float(row['amount']) for row in reader if 'withdrawl' in row['category']])
         totalwithdrawls = sum(allwithdrawls)
     # vvv CURRENT BALANCE vvv
-    print(f"${totaldeposits - totalwithdrawls} as of {date()} // {time()}")
+    print(f"\033[32m${totaldeposits - totalwithdrawls}\033[0m as of {date()} // {time()}")
     print("")
 
 # ====================> WITHDRAW FUNCTION <====================
@@ -149,10 +154,10 @@ def withdrawl():
     os.chdir('python-exercises')
     # vvv INITIAL MENU vvv
     print(
-          "==> WITHDRAWL MENU <==\n\n"
-          "(1) Make A Withdrawl\n"
-          "(2) Summary of Withdrawls\n"
-          "(3) Back To Main Menu\n"
+          "\033[33m==> WITHDRAWL MENU <==\033[0m\n\n"
+          "\033[36m(1) Make A Withdrawl\033[0m\n"
+          "\033[36m(2) Summary of Withdrawls\033[0m\n"
+          "\033[36m(3) Back To Main Menu\033[0m\n"
          )
     menuin = input("Welcome to the 'Withdrawl Menu'!  What would you like to do?\n")
     while True:
@@ -160,7 +165,6 @@ def withdrawl():
         if menuin == '1':
             clear()
             # vvv VARIABLES vvv
-            withdrawin = input('How much would you like to withdraw?\n')
             cols = ['id', 'date', 'time', 'category', 'amount', 'description']    
             # vvv IF CSV FILE DOESN'T EXIST...  CREATE FILE vvv
             if os.path.exists('command_line_checkbook_transactions.csv') == False:
@@ -195,22 +199,49 @@ def withdrawl():
                     max_id = max([int(row[0]) for row in reader])
                     new_id = max_id + 1
                 # vvv CREATE NEW LINE vvv
-                with open('command_line_checkbook_transactions.csv', 'a') as f:
-                    writer = csv.DictWriter(f, fieldnames = cols)
-                    writer.writerow(
-                        {
-                            'id' : new_id,
-                            'date' : date(),
-                            'time' : time(),
-                            'category' : 'withdrawl',
-                            'amount' : withdrawin,
-                            'description' : 'description'
-                        }
-                    )
-                clear()
-                print(f"${withdrawin} logged on {time()}...\nReturning to 'Main Menu'")
-                print("")
-                break
+                while True:
+                    try:
+                        withdrawin = float(input('How much would you like to withdraw?\n'))
+                        break
+                    except ValueError:
+                        clear()
+                        print("Invalid input\n")
+                descqst = input("Would you like to add a descriptor? \033[33m(Y/N)\033[0m\n")
+                if descqst.lower() == 'y':
+                    descin = input("Input your descriptor:\n")
+                    with open('command_line_checkbook_transactions.csv', 'a') as f:
+                        writer = csv.DictWriter(f, fieldnames = cols)
+                        writer.writerow(
+                            {
+                                'id' : new_id,
+                                'date' : date(),
+                                'time' : time(),
+                                'category' : 'withdrawl',
+                                'amount' : withdrawin,
+                                'description' : descin
+                            }
+                        )
+                    clear()
+                    print(f"\033[32m${withdrawin}\033[0m logged on {time()}...\n\033[33m{descin}\033[0m inputted into description...\nReturning to \033[33m'Main Menu'\033[0m")
+                    print("")
+                    break
+                else:
+                    with open('command_line_checkbook_transactions.csv', 'a') as f:
+                        writer = csv.DictWriter(f, fieldnames = cols)
+                        writer.writerow(
+                            {
+                                'id' : new_id,
+                                'date' : date(),
+                                'time' : time(),
+                                'category' : 'withdrawl',
+                                'amount' : withdrawin,
+                                'description' : ''
+                            }
+                        )
+                    clear()
+                    print(f"\033[32m${withdrawin}\033[0m logged on {time()}...\nReturning to \033[33m'Main Menu'\033[0m")
+                    print("")
+                    break
         # vvv IF USER WANTS SUMMARY OF WITHDRAWLS vvv
         elif menuin == '2':
             with open('command_line_checkbook_transactions.csv', 'r') as f:
@@ -219,19 +250,19 @@ def withdrawl():
                 allwithdrawls = ([float(row['amount']) for row in reader if 'withdrawl' in row['category']])
                 sumwithdrawls = sum(allwithdrawls)
                 clear()
-                print(f"Total Withdrawls ==> ${sumwithdrawls}")
+                print(f"Total Withdrawls ==> \033[32m${sumwithdrawls}\033[0m")
                 print("")
                 break
         # vvv IF USER INPUT WANTS TO GO BACK TO MAIN MENU vvv    
         elif menuin == '3':
             clear()
-            print("Returning to 'Main Menu'...")
+            print("Returning to \033[33m'Main Menu'\033[0m...")
             print("")
             break
         # vvv IF INPUT IS INVALID vvv
         else:
             clear()
-            print("Invalid input...\nReturning to 'Main Menu'")
+            print("Invalid input...\nReturning to \033[33m'Main Menu'\033[0m")
             print("")
             break
     
@@ -249,18 +280,17 @@ def deposit():
     os.chdir('python-exercises')
     # vvv INITIAL MENU vvv
     print(
-          "==> DEPOSIT MENU <==\n\n"
-          "(1) Make A Deposit\n"
-          "(2) Summary of Deposits\n"
-          "(3) Back To Main Menu\n"
+          "\033[33m==> DEPOSIT MENU <==\033[0m\n\n"
+          "\033[36m(1) Make A Deposit\033[0m\n"
+          "\033[36m(2) Summary of Deposits\033[0m\n"
+          "\033[36m(3) Back To Main Menu\033[0m\n"
          )
-    menuin = input("Welcome to the 'Deposit Menu'!  What would you like to do?\n")
+    menuin = input("Welcome to the \033[33m'Deposit Menu'\033[0m!  What would you like to do?\n")
     while True:
         # vvv MAKE A DEPOSIT vvv
         if menuin == '1':
             clear()
             # vvv VARIABLES vvv
-            depositin = input('How much would you like to deposit?\n')
             cols = ['id', 'date', 'time', 'category', 'amount', 'description']    
             # vvv IF CSV FILE DOESN'T EXIST...  CREATE FILE vvv
             if os.path.exists('command_line_checkbook_transactions.csv') == False:
@@ -279,11 +309,11 @@ def deposit():
                         }
                     )
                 if os.path.exists('command_line_checkbook_transactions.csv') == True:
-                    print("Successfully created file...\nReturning to 'Main Menu'")
+                    print("Successfully created file...\nReturning to \033[33m'Main Menu'\033[0m")
                     print("")
                     break
                 else:
-                    print("Failed to create file...\nReturning to 'Main Menu'")
+                    print("Failed to create file...\nReturning to \033[33m'Main Menu'\033[0m")
                     print("")
                     break
             # vvv IF CSV FILE EXIST... EDIT FILE vvv
@@ -295,21 +325,48 @@ def deposit():
                     max_id = max([int(row[0]) for row in reader])
                     new_id = max_id + 1
                 # vvv CREATE NEW LINE vvv
-                with open('command_line_checkbook_transactions.csv', 'a') as f:
-                    writer = csv.DictWriter(f, fieldnames = cols)
-                    writer.writerow(
-                        {
-                            'id' : new_id,
-                            'date' : date(),
-                            'time' : time(),
-                            'category' : 'deposit',
-                            'amount' : depositin,
-                            'description' : 'description'
-                        }
-                    )
-                clear()
-                print(f"${depositin} logged on {time()}...\nReturning to 'Main Menu'")
-                print("")
+                while True:
+                    try:
+                        depositin = float(input('How much would you like to deposit?\n'))
+                        break
+                    except ValueError:
+                        clear()
+                        print("Invalid input\n")
+                descqst = input("Would you like to add a descriptor? \033[33m(Y/N)\033[0m\n")
+                if descqst.lower() == 'y':
+                    descin = input("Input your descriptor:\n")
+                    with open('command_line_checkbook_transactions.csv', 'a') as f:
+                        writer = csv.DictWriter(f, fieldnames = cols)
+                        writer.writerow(
+                            {
+                                'id' : new_id,
+                                'date' : date(),
+                                'time' : time(),
+                                'category' : 'deposit',
+                                'amount' : depositin,
+                                'description' : descin
+                            }
+                        )
+                    clear()
+                    print(f"\033[32m${depositin}\033[0m logged on {time()}...\n\033[33m{descin}\033[0m inputted into description...\nReturning to \033[33m'Main Menu'\033[0m")
+                    print("")
+                    break
+                else:
+                    with open('command_line_checkbook_transactions.csv', 'a') as f:
+                        writer = csv.DictWriter(f, fieldnames = cols)
+                        writer.writerow(
+                            {
+                                'id' : new_id,
+                                'date' : date(),
+                                'time' : time(),
+                                'category' : 'deposit',
+                                'amount' : depositin,
+                                'description' : ''
+                            }
+                        )
+                    clear()
+                    print(f"\033[32m${depositin}\033[0m logged on {time()}...\nReturning to \033[33m'Main Menu'\033[0m")
+                    print("")
                 break
         # vvv IF USER WANTS SUMMARY OF DEPOSITS vvv
         elif menuin == '2':
@@ -319,20 +376,18 @@ def deposit():
                 alldeposits = ([float(row['amount']) for row in reader if 'deposit' in row['category']])
                 sumdeposits = sum(alldeposits)
                 clear()
-                print(f"Total Deposits ==> ${sumdeposits}")
+                print(f"Total Deposits ==> \033[32m${sumdeposits}\033[0m")
                 print("")
                 break
         # vvv IF USER INPUT WANTS TO GO BACK TO MAIN MENU vvv    
         elif menuin == '3':
             clear()
-            print("Returning to 'Main Menu'...")
-            print("")
+            print("Returning to \033[33m'Main Menu'\033[0m...\n")
             break
         # vvv IF INPUT IS INVALID vvv
         else:
             clear()
-            print("Invalid input...\nReturning to 'Main Menu'\n")
-            print("")
+            print("Invalid input...\nReturning to \033[33m'Main Menu'\033[0m\n")
             break
 
 # ====================> TRANSACTION HISTORY FUNCTION <====================
@@ -347,15 +402,18 @@ def history():
     os.chdir(os.path.expanduser('~'))
     os.chdir('codeup-data-science')
     os.chdir('python-exercises')
+    # vvv VARIABLES vvv
+    cols = ['id', 'date', 'time', 'category', 'amount', 'description']
     # vvv BODY/OUTPUT vvv
     with open('command_line_checkbook_transactions.csv', 'r') as f:
         rows = f.readlines()
         headers = rows[0].strip().split(',')
-        print(f"{headers[0] : ^25} | {headers[1] : ^25} | {headers[2] : ^25} | {headers[3] : ^25} | {headers[4] : ^25} | {headers[5] : ^25}")
-        print(f"{'-------------------------' : ^25} | {'-------------------------' : ^25} | {'-------------------------' : ^25} | {'-------------------------' : ^25} | {'-------------------------' : ^25} | {'-------------------------' : ^25}")
+        print(f"\033[33m{headers[0] : ^20}\033[0m | \033[33m{headers[1] : ^20}\033[0m | \033[33m{headers[2] : ^20}\033[0m | \033[33m{headers[3] : ^20}\033[0m | \033[33m{headers[4] : ^20}\033[0m | \033[33m{headers[5] : ^20}\033[0m")
+        print(f"\033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m")
         for row in rows[2:]:
             data = row.strip().split(',')
-            print(f"{data[0] : ^25} | {data[1] : ^25} | {data[2] : ^25} | {data[3] : ^25} | {data[4] : ^25} | {data[5] : ^25}")
+            print(f"\033[36m{data[0] : ^20}\033[0m | \033[36m{data[1] : ^20}\033[0m | \033[36m{data[2] : ^20}\033[0m | \033[36m{data[3] : ^20}\033[0m | \033[32m{data[4] : ^20}\033[0m | \033[36m{data[5] : ^20}\033[0m")
+            print(f"\033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m")
         print("")
 
 # ====================> CLEAR TERMINAL FUNCTION <====================
@@ -367,6 +425,34 @@ def clear():
     import os
     # vvv BODY/OUTPUT vvv
     os.system('clear')
+
+# ====================> DELETE HISTORY FUNCTION <====================
+def DELETE():
+    # vvv IMPORTS vvv
+    import os
+    # vvv os.chdir vvv
+    os.chdir(os.path.expanduser('~'))
+    os.chdir('codeup-data-science')
+    os.chdir('python-exercises')
+    # vvv BODY/OUTPUT vvv
+    req = input('Are you sure you want to \033[31mDELETE\033[0m your transaction history? \033[33m(Y/N)\033[0m\n')
+    while True:
+        if req.lower() == 'y':
+            clear()
+            print('\033[31mDELETING\033[0m history...')
+            os.remove('command_line_checkbook_transactions.csv')
+            print('History \033[31mDELETED\033[0m')
+            print("Returning to \033[33m'Main Menu'\033[0m...\n")
+            break
+        elif req.lower() == 'n':
+            clear()
+            print("Returning to \033[33m'Main Menu'\033[0m...\n")
+            break
+        # vvv IF INPUT IS INVALID vvv
+        else:
+            clear()
+            print("Invalid input...\nReturning to \033[33m'Main Menu'\033[0m\n")
+            break
 
 # =======================================================================================================
 # FUNCTIONS END
