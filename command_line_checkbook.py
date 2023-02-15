@@ -11,9 +11,10 @@
 #           - WITHDRAWL
 #           - DEPOSIT
 #           - HISTORY
-#           - SPECIFIC QUERY
 #           - CLEAR TERMINAL
 #           - DELETE HISTORY
+#           - SPECIFIC QUERY
+#           - TEST
 #       END PRODUCT
 
 # =======================================================================================================
