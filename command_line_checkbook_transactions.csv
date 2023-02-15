@@ -1,3 +1,4 @@
 id,date,time,category,amount,description
-0,14-Feb-2023,15:53:32,,0,
-1,14-Feb-2023,15:53:49,deposit,100.0,Initial moneh!
+0,14-Feb-2023,21:30:51,,0,
+1,14-Feb-2023,21:31:03,deposit,10.0,Initial input
+2,14-Feb-2023,21:31:41,deposit,100.0,
