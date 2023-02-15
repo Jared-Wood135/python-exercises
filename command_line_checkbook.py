@@ -558,6 +558,43 @@ def query():
         clear()
         print("Invalid input...\nReturning to \033[33m'Main Menu'\033[0m\n")
 
+# ====================> TEST FUNCTION <====================
+def test():
+    # vvv IMPORTS vvv
+    import os
+    import csv
+    # vvv os.chdir vvv
+    os.chdir(os.path.expanduser('~'))
+    os.chdir('codeup-data-science')
+    os.chdir('python-exercises')
+    # vvv BODY/OUTPUT vvv
+    clear()
+    columns = ['id', 'date', 'time', 'category', 'amount', 'description']
+    user = input('What transaction id would you like to alter?\n\033[33m(id)\033[0m\n')
+    clear()
+    userdesc = input('What \033[33mDESCRIPTION\033[0m did you want? \033[33m(Anything)\033[0m\n')
+    with open('command_line_checkbook_transactions.csv', 'w') as f:
+        reader = csv.DictWriter(f)
+        next(reader)
+        transactions = list(reader)
+        for transaction in transactions:
+            if transaction['id'] == user:
+                print(transaction['id'])
+                transaction['description'] = userdesc
+                print(transaction['description'])
+    with open('command_line_checkbook_transactions.csv', 'r') as f:
+        reader = csv.DictReader(f)
+        next(reader)
+        output = ([row for row in reader if user in row['id']])
+        clear()
+        print(f"\033[33m{'id' : ^20}\033[0m | \033[33m{'date' : ^20}\033[0m | \033[33m{'time' : ^20}\033[0m | \033[33m{'category' : ^20}\033[0m | \033[33m{'amount' : ^20}\033[0m | \033[33m{'description' : ^20}\033[0m")
+        print(f"\033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m | \033[33m{'--------------------' : ^20}\033[0m")
+        for dict in output:
+            print(f"\033[36m{dict['id'] : ^20}\033[0m | \033[36m{dict['date'] : ^20}\033[0m | \033[36m{dict['time'] : ^20}\033[0m | \033[36m{dict['category'] : ^20}\033[0m | \033[32m{dict['amount'] : ^20}\033[0m | \033[36m{dict['description'] : ^20}\033[0m")
+            print(f"\033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m | \033[35m{'----------' : ^20}\033[0m")
+test()
+
+
 # =======================================================================================================
 # FUNCTIONS END
 # FUNCTIONS TO END PRODUCT
