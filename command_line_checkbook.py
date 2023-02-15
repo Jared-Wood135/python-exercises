@@ -203,48 +203,53 @@ def withdrawl():
                     new_id = max_id + 1
                 # vvv CREATE NEW LINE vvv
                 while True:
-                    try:
-                        withdrawin = float(input('How much would you like to withdraw?\n'))
-                        break
-                    except ValueError:
+                    while True:
+                        try:
+                            withdrawin = float(input('How much would you like to withdraw?\n'))
+                            break
+                        except ValueError:
+                            clear()
+                            print("Invalid input\n")
+                    descqst = input("Would you like to add a descriptor? \033[33m(Y/N)\033[0m\n")
+                    if descqst.lower() == 'y':
+                        descin = input("Input your descriptor:\n")
+                        with open('command_line_checkbook_transactions.csv', 'a') as f:
+                            writer = csv.DictWriter(f, fieldnames = cols)
+                            writer.writerow(
+                                {
+                                    'id' : new_id,
+                                    'date' : date(),
+                                    'time' : time(),
+                                    'category' : 'withdrawl',
+                                    'amount' : withdrawin,
+                                    'description' : descin
+                                }
+                            )
                         clear()
-                        print("Invalid input\n")
-                descqst = input("Would you like to add a descriptor? \033[33m(Y/N)\033[0m\n")
-                if descqst.lower() == 'y':
-                    descin = input("Input your descriptor:\n")
-                    with open('command_line_checkbook_transactions.csv', 'a') as f:
-                        writer = csv.DictWriter(f, fieldnames = cols)
-                        writer.writerow(
-                            {
-                                'id' : new_id,
-                                'date' : date(),
-                                'time' : time(),
-                                'category' : 'withdrawl',
-                                'amount' : withdrawin,
-                                'description' : descin
-                            }
-                        )
-                    clear()
-                    print(f"\033[32m${withdrawin}\033[0m logged on \033[36m{time()}\033[0m...\n\033[33m{descin}\033[0m inputted into description...\nReturning to \033[33m'Main Menu'\033[0m")
-                    print("")
-                    break
-                else:
-                    with open('command_line_checkbook_transactions.csv', 'a') as f:
-                        writer = csv.DictWriter(f, fieldnames = cols)
-                        writer.writerow(
-                            {
-                                'id' : new_id,
-                                'date' : date(),
-                                'time' : time(),
-                                'category' : 'withdrawl',
-                                'amount' : withdrawin,
-                                'description' : ''
-                            }
-                        )
-                    clear()
-                    print(f"\033[32m${withdrawin}\033[0m logged on \033[36m{time()}\033[0m...\nReturning to \033[33m'Main Menu'\033[0m")
-                    print("")
-                    break
+                        print(f"\033[32m${withdrawin}\033[0m logged on \033[36m{time()}\033[0m...\n\033[33m{descin}\033[0m inputted into description...\nReturning to \033[33m'Main Menu'\033[0m\n")
+                    else:
+                        with open('command_line_checkbook_transactions.csv', 'a') as f:
+                            writer = csv.DictWriter(f, fieldnames = cols)
+                            writer.writerow(
+                                {
+                                    'id' : new_id,
+                                    'date' : date(),
+                                    'time' : time(),
+                                    'category' : 'withdrawl',
+                                    'amount' : withdrawin,
+                                    'description' : ''
+                                }
+                            )
+                        clear()
+                        print(f"\033[32m${withdrawin}\033[0m logged on \033[36m{time()}\033[0m...\nReturning to \033[33m'Main Menu'\033[0m\n")
+                    again = input("Want to make another withdrawl? \033[33m(Y/N)\033[0m\n")
+                    if again.lower() == 'y':
+                        clear()
+                        print("Prepping for additional input...")
+                    else:
+                        clear()
+                        print("Returning to \033[33m'Main Menu'\033[0m...")
+                        return False
         # vvv IF USER WANTS SUMMARY OF WITHDRAWLS vvv
         elif menuin == '2':
             with open('command_line_checkbook_transactions.csv', 'r') as f:
@@ -253,20 +258,17 @@ def withdrawl():
                 allwithdrawls = ([float(row['amount']) for row in reader if 'withdrawl' in row['category']])
                 sumwithdrawls = sum(allwithdrawls)
                 clear()
-                print(f"Total Withdrawls ==> \033[32m${sumwithdrawls}\033[0m")
-                print("")
+                print(f"Total Withdrawls ==> \033[32m${sumwithdrawls}\033[0m\n")
                 break
         # vvv IF USER INPUT WANTS TO GO BACK TO MAIN MENU vvv    
         elif menuin == '3':
             clear()
-            print("Returning to \033[33m'Main Menu'\033[0m...")
-            print("")
+            print("Returning to \033[33m'Main Menu'\033[0m...\n")
             break
         # vvv IF INPUT IS INVALID vvv
         else:
             clear()
-            print("Invalid input...\nReturning to \033[33m'Main Menu'\033[0m")
-            print("")
+            print("Invalid input...\nReturning to \033[33m'Main Menu'\033[0m\n")
             break
     
 # ====================> DEPOSIT FUNCTION <====================
@@ -327,48 +329,55 @@ def deposit():
                     new_id = max_id + 1
                 # vvv CREATE NEW LINE vvv
                 while True:
-                    try:
-                        depositin = float(input('How much would you like to deposit?\n'))
-                        break
-                    except ValueError:
+                    while True:
+                        try:
+                            depositin = float(input('How much would you like to deposit?\n'))
+                            break
+                        except ValueError:
+                            clear()
+                            print("Invalid input\n")
+                    descqst = input("Would you like to add a descriptor? \033[33m(Y/N)\033[0m\n")
+                    if descqst.lower() == 'y':
+                        descin = input("Input your descriptor:\n")
+                        with open('command_line_checkbook_transactions.csv', 'a') as f:
+                            writer = csv.DictWriter(f, fieldnames = cols)
+                            writer.writerow(
+                                {
+                                    'id' : new_id,
+                                    'date' : date(),
+                                    'time' : time(),
+                                    'category' : 'deposit',
+                                    'amount' : depositin,
+                                    'description' : descin
+                                }
+                            )
                         clear()
-                        print("Invalid input\n")
-                descqst = input("Would you like to add a descriptor? \033[33m(Y/N)\033[0m\n")
-                if descqst.lower() == 'y':
-                    descin = input("Input your descriptor:\n")
-                    with open('command_line_checkbook_transactions.csv', 'a') as f:
-                        writer = csv.DictWriter(f, fieldnames = cols)
-                        writer.writerow(
-                            {
-                                'id' : new_id,
-                                'date' : date(),
-                                'time' : time(),
-                                'category' : 'deposit',
-                                'amount' : depositin,
-                                'description' : descin
-                            }
-                        )
-                    clear()
-                    print(f"\033[32m${depositin}\033[0m logged on \033[36m{time()}\033[0m...\n\033[33m{descin}\033[0m inputted into description...\nReturning to \033[33m'Main Menu'\033[0m")
-                    print("")
-                    break
-                else:
-                    with open('command_line_checkbook_transactions.csv', 'a') as f:
-                        writer = csv.DictWriter(f, fieldnames = cols)
-                        writer.writerow(
-                            {
-                                'id' : new_id,
-                                'date' : date(),
-                                'time' : time(),
-                                'category' : 'deposit',
-                                'amount' : depositin,
-                                'description' : ''
-                            }
-                        )
-                    clear()
-                    print(f"\033[32m${depositin}\033[0m logged on \033[36m{time()}\033[0m...\nReturning to \033[33m'Main Menu'\033[0m")
-                    print("")
-                break
+                        print(f"\033[32m${depositin}\033[0m logged on \033[36m{time()}\033[0m...\n\033[33m{descin}\033[0m inputted into description...\nReturning to \033[33m'Main Menu'\033[0m")
+                        print("")
+                    else:
+                        with open('command_line_checkbook_transactions.csv', 'a') as f:
+                            writer = csv.DictWriter(f, fieldnames = cols)
+                            writer.writerow(
+                                {
+                                    'id' : new_id,
+                                    'date' : date(),
+                                    'time' : time(),
+                                    'category' : 'deposit',
+                                    'amount' : depositin,
+                                    'description' : ''
+                                }
+                            )
+                        clear()
+                        print(f"\033[32m${depositin}\033[0m logged on \033[36m{time()}\033[0m...\nReturning to \033[33m'Main Menu'\033[0m")
+                        print("")
+                    again = input("Want to make another deposit? \033[33m(Y/N)\033[0m\n")
+                    if again.lower() == 'y':
+                        clear()
+                        print("Prepping for additional input...")
+                    else:
+                        clear()
+                        print("Returning to \033[33m'Main Menu'\033[0m...")
+                        return False
         # vvv IF USER WANTS SUMMARY OF DEPOSITS vvv
         elif menuin == '2':
             with open('command_line_checkbook_transactions.csv', 'r') as f:
