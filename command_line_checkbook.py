@@ -126,10 +126,6 @@ def balance():
     # vvv IMPORTS vvv
     import os
     import csv
-    # vvv os.chdir vvv
-    os.chdir(os.path.expanduser('~'))
-    os.chdir('codeup-data-science')
-    os.chdir('python-exercises')
     # vvv GET TOTAL DEPOSITS vvv
     with open('command_line_checkbook_transactions.csv', 'r') as read:
         reader = csv.DictReader(read)
@@ -154,10 +150,6 @@ def withdrawl():
     # vvv IMPORTS vvv
     import os
     import csv
-    # vvv os.chdir vvv
-    os.chdir(os.path.expanduser('~'))
-    os.chdir('codeup-data-science')
-    os.chdir('python-exercises')
     # vvv INITIAL MENU vvv
     print(
           "\033[33m==> WITHDRAWL MENU <==\033[0m\n\n"
@@ -280,10 +272,6 @@ def deposit():
     # vvv IMPORTS vvv
     import os
     import csv
-    # vvv os.chdir vvv
-    os.chdir(os.path.expanduser('~'))
-    os.chdir('codeup-data-science')
-    os.chdir('python-exercises')
     # vvv INITIAL MENU vvv
     print(
           "\033[33m==> DEPOSIT MENU <==\033[0m\n\n"
@@ -409,10 +397,6 @@ def history():
     # vvv IMPORTS vvv
     import os
     import csv
-    # vvv os.chdir vvv
-    os.chdir(os.path.expanduser('~'))
-    os.chdir('codeup-data-science')
-    os.chdir('python-exercises')
     # vvv VARIABLES vvv
     cols = ['id', 'date', 'time', 'category', 'amount', 'description']
     # vvv BODY/OUTPUT vvv
@@ -441,10 +425,6 @@ def clear():
 def DELETE():
     # vvv IMPORTS vvv
     import os
-    # vvv os.chdir vvv
-    os.chdir(os.path.expanduser('~'))
-    os.chdir('codeup-data-science')
-    os.chdir('python-exercises')
     # vvv BODY/OUTPUT vvv
     req = input('Are you sure you want to \033[31mDELETE\033[0m your transaction history? \033[33m(Y/N)\033[0m\n')
     while True:
@@ -470,10 +450,6 @@ def query():
     # vvv IMPORTS vvv
     import os
     import csv
-    # vvv os.chdir vvv
-    os.chdir(os.path.expanduser('~'))
-    os.chdir('codeup-data-science')
-    os.chdir('python-exercises')
     # vvv BODY/OUTPUT vvv
     columns = ['id', 'date', 'time', 'category', 'amount', 'description']
     user = input('What would you like to query by?\n\033[33m(id, date, time, category, amount, description)\033[0m\n')
@@ -564,10 +540,6 @@ def test():
     # vvv IMPORTS vvv
     import os
     import csv
-    # vvv os.chdir vvv
-    os.chdir(os.path.expanduser('~'))
-    os.chdir('codeup-data-science')
-    os.chdir('python-exercises')
     # vvv BODY/OUTPUT vvv
     clear()
     columns = ['id', 'date', 'time', 'category', 'amount', 'description']
